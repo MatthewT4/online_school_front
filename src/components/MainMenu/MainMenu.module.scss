@@ -1,0 +1,18 @@
+.main {
+  width: 60%;
+  left: 0;
+  right: 0;
+  ///position: absolute;
+  //display: inline-block;
+  min-width: 400px;
+  margin: auto;
+  padding: 0;
+}
+.elem {
+  padding: 15px;
+  display: block;
+  background-color: white;
+  box-shadow: 1px 2px 7px 0px grey;
+  margin-top: 0;
+  margin-bottom: 5%;
+}
