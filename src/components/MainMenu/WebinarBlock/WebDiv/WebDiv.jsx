@@ -6,10 +6,9 @@ const WebDiv = (props) => {
         save = <div className={styles.buttonConnect}><button className={styles.button}>Подключиться</button></div>
     }
     var nameStyles = styles.webdiv
-    if (props.lenn != props.kei){
+    if (props.lenn != props.idx){
         nameStyles = styles.border
     }
-    console.log(props.lenn, props.kei)
     return (
         <div className={styles.w}>
             <div className={nameStyles}>

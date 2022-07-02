@@ -12,7 +12,7 @@ const WebinarBlock = () => {
                 console.log(data)
             }
             catch (error) {
-                console.log("123",error)
+                console.log(error)
                 return("");
             }
         }
@@ -26,7 +26,7 @@ const WebinarBlock = () => {
         <div className={styles.web}>
             <h1 className={styles.text}>Вебинары сегодня</h1>
             {webinars.map((web, idx )=> (
-                <WebDiv key={idx} data={web} lenn={lenMas} kei={idx}/>
+                <WebDiv key={idx} data={web} lenn={lenMas} idx={idx}/>
             ))}
         </div>
     );
