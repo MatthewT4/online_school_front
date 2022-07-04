@@ -1,0 +1,52 @@
+.webdiv {
+  margin-left: 1%;
+  padding: 1%;
+}
+.border {
+  padding: 1%;
+  margin-left: 1%;
+  padding-bottom: 0;
+  border-bottom: 1px solid black;
+}
+.buttonConnect {
+  display: inline-block;
+}
+.button {
+  position: relative;
+  margin: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50px;
+  background-color: #ccc;
+  color: white;
+  background: #FF4D4D;
+  padding: 8% 16%;
+  font-size: 16px;
+  margin: 5px;
+  right: 20px;
+}
+.w {
+  position: relative;
+}
+.button:hover {
+  background: #CC0000;
+}
+.button:focus {
+  background: #FB9191;
+}
+.nameWeb {
+  margin-top: 10px;
+  line-height: 1;
+}
+.timeStart {
+  line-height: 0;
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.text {
+  display: inline-block;
+  width: 80%;
+}

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import styles from "./CoursesMenu.module.scss"
+import styles from "./LeftCoursesMenu.module.scss"
+import {NavLink} from "react-router-dom";
 
 function getDataInStr(data) {
     var res = data[8] + data[9]
@@ -9,7 +10,7 @@ function getDataInStr(data) {
     return res
 }
 
-const CoursesMenu = () => {
+const LeftCoursesMenu = () => {
     const [courses, setCourses] = useState([])
     React.useEffect(() => {
         const fenchData = async() => {
@@ -32,7 +33,7 @@ const CoursesMenu = () => {
                 <ul className={styles.navbar}>
                 {courses.map((course, idx) => (
                     <div key={idx} className={styles.courseBlock}>
-                        <li className={styles.ul}><a href="">{course.name_course}, до {getDataInStr(course.payment_end)}</a></li>
+                        <li className={styles.ul}><NavLink className={({isActive}) => isActive ? (styles.active) : ""} to={`/course/${course.course_id}/start`}>{course.name_course}, до {getDataInStr(course.payment_end)}</NavLink></li>
                     </div>
                 ))}
                 </ul>
@@ -41,4 +42,4 @@ const CoursesMenu = () => {
     );
 };
 
-export default CoursesMenu;
+export default LeftCoursesMenu;

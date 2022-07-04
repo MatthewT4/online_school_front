@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from "./HwDiv.module.scss"
-
+import styles from "./WebDiv.module.scss"
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
 }
@@ -17,31 +16,35 @@ function GetInfoDate(date) {
     }).join(":")
 
     if ((mesDate.getDate() == now.getDate()) && (mesDate.getMonth() == now.getMonth()) && (mesDate.getFullYear() == now.getFullYear())) {
-        return "Дедлайн Сегодня, в " + time + " мск."
+        return "Сегодня, в " + time + " мск."
     }
     now.setDate(now.getDate() + 1)
     if ((mesDate.getDate() == now.getDate()) && (mesDate.getMonth() == now.getMonth()) && (mesDate.getFullYear() == now.getFullYear())) {
-        return "Дедлайн завтра, в " + time + " мск."
+        return "Завтра, в " + time + " мск."
     }
     var vec_month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
-    return "Дедлайн " + mesDate.getDate() + " " + vec_month[mesDate.getMonth() - 1] + " в " + time + " мск."
+    return mesDate.getDate() + " " + vec_month[mesDate.getMonth() - 1] + " в " + time + " мск."
 }
-function HwDiv(props) {
+const WebDiv = (props) => {
+    var save = ""
+    if (props.data.hasOwnProperty("web_link")) {
+        save = <div className={styles.buttonConnect}><button className={styles.button}>Подключиться</button></div>
+    }
     var nameStyles = styles.webdiv
     if (props.lenn != props.idx){
         nameStyles = styles.border
     }
     return (
-        <div className={nameStyles}>
-            <div className={styles.text}>
-                <h3 className={styles.nameHw}>{props.data.homework_name}</h3>
-                <p className={styles.timeStart}>{GetInfoDate(props.data.deadline)}</p>
-            </div>
-            <div className={styles.ButtonDiv}>
-                <button className={styles.button}>Выполнить</button>
+        <div className={styles.w}>
+            <div className={nameStyles}>
+                <div className={styles.text}>
+                    <h3 className={styles.nameWeb}>{props.data.name}</h3>
+                    <p className={styles.timeStart}>{GetInfoDate(props.data.meet_date)}</p>
+                </div>
+                {save}
             </div>
         </div>
     );
 };
 
-export default HwDiv;
+export default WebDiv;
