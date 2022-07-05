@@ -14,6 +14,7 @@ const CourseMenu = () => {
                     <NavLink className={({isActive}) => isActive ? (styles.activeKnopka) : (styles.knopka)} to="web">Вебинары</NavLink>
                     <NavLink className={({isActive}) => isActive ? (styles.activeKnopka) : (styles.knopka)} to="homeworks">Домашки</NavLink>
                     <a className={styles.activeKnopka}>Темы</a>
+                    <a className={styles.activeKnopka}>Аналитика</a>
                     <p className={styles.skoro}>🔥Скоро!</p>
                 </div>
             </div>

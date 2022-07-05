@@ -1,12 +1,11 @@
-import mStyles from "../../MainStyles.module.scss"
+import mStyles from "../../../MainStyles.module.scss"
 import {useState, useEffect} from "react"
 import React from 'react';
 import {useParams} from "react-router-dom";
-import WebDiv from "../../baseComponents/WebDiv/WebDiv";
-import WebMenu from "./WebMenu/WebMenu";
+import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 
 const StartMenu = () => {
-    /*var courseId = useParams("id")
+    var courseId = useParams("id")
     console.log("start menu", courseId.id)
     const [web, setWeb] = useState("")
     useEffect(() => {
@@ -16,15 +15,13 @@ const StartMenu = () => {
     }, [courseId.id])
     if (web == null || web.length == 0) {
         return <div className={mStyles.elem}><h2>Все Вебинары закончились 😞</h2></div>
-    }*/
+    }
     return (
-        <div>
-            <div className={mStyles.elem}>
-                <h2>123</h2>
-            </div>
-            <WebMenu/>
-        </div>
-    );
+    <div className={mStyles.elem}>
+        <h2>Ближайший вебинар</h2>
+        <WebDiv data={web[0]}></WebDiv>
+    </div>
+);
 };
 
 export default StartMenu;

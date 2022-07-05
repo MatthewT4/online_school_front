@@ -38,7 +38,7 @@ const WebDiv = (props) => {
         <div className={styles.w}>
             <div className={nameStyles}>
                 <div className={styles.text}>
-                    <h3 className={styles.nameWeb}>{props.data.name}</h3>
+                    <h4 className={styles.nameWeb}>{props.data.name}</h4>
                     <p className={styles.timeStart}>{GetInfoDate(props.data.meet_date)}</p>
                 </div>
                 {save}
