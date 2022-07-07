@@ -1,3 +1,6 @@
+import React from 'react';
+import styles from "./HwDiv.module.scss"
+
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
 }
@@ -23,10 +26,22 @@ function GetInfoDate(date) {
     var vec_month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
     return "Дедлайн " + mesDate.getDate() + " " + vec_month[mesDate.getMonth() - 1] + " в " + time + " мск."
 }
+const HwDiv = (props) =>  {
+    var nameStyles = styles.webdiv
+    if (props.lenn != props.idx){
+        nameStyles = styles.border
+    }
+    return (
+        <div className={nameStyles}>
+            <div className={styles.text}>
+                <h4 className={styles.nameHw}>{props.data.homework_name}</h4>
+                <p className={styles.timeStart}>{GetInfoDate(props.data.deadline)}</p>
+            </div>
+            <div className={styles.ButtonDiv}>
+                <button className={styles.button}>Выполнить</button>
+            </div>
+        </div>
+    );
+};
 
-export function GetData(url, setFunc) {
-     fetch(url)
-        .then(res => res.json())
-        .then(InData => setFunc(InData))
-    return
-}
+export default HwDiv;

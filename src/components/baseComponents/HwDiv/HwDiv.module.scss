@@ -1,19 +1,31 @@
 .webdiv {
   margin-left: 1%;
   padding: 1%;
+  display: flex;
 }
 .border {
+  display: flex;
   padding: 1%;
   margin-left: 1%;
   padding-bottom: 0;
   border-bottom: 1px solid black;
 }
-.buttonConnect {
+.text {
+  //display: inline-block;
+  //width: 80%;
+  flex-grow: 1;
+}
+
+.ButtonDiv {
   display: inline-block;
+  padding: 10px;
+  margin-top: 0;
+  margin-right: 10px;
+
 }
 .button {
-  position: relative;
-  margin: auto;
+  //position: relative;
+  //margin: auto;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -24,8 +36,7 @@
   background: #FF4D4D;
   padding: 8% 16%;
   font-size: 16px;
-  margin: 5px;
-  right: 2px;
+  position: relative;
 }
 .w {
   position: relative;
@@ -36,17 +47,16 @@
 .button:focus {
   background: #FB9191;
 }
-.nameWeb {
+.nameHw {
+  font-size: 16px;
   margin-top: 10px;
   line-height: 1;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 .timeStart {
   line-height: 0;
   color: gray;
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 30px;
-}
-.text {
-  display: inline-block;
-  width: 80%;
 }

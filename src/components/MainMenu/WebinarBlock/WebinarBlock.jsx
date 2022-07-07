@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from "./WebinarBlock.module.scss";
-import WebDiv from "./WebDiv/WebDiv";
+import WebDiv from "../../baseComponents/WebDiv/WebDiv";
 const WebinarBlock = () => {
     const [webinars, setWebinars] = useState([])
     React.useEffect(() => {
@@ -20,11 +20,11 @@ const WebinarBlock = () => {
     }, [])
     var lenMas = webinars.length -1
     if (webinars.length == 0) {
-        return (<div><h1>Вебинаров сегодня нет 😴</h1></div>);
+        return (<div><h2>Вебинаров сегодня нет 😴</h2></div>);
     }
     return (
         <div className={styles.web}>
-            <h1 className={styles.text}>Вебинары сегодня</h1>
+            <h2 className={styles.text}>Вебинары сегодня</h2>
             {webinars.map((web, idx )=> (
                 <WebDiv key={idx} data={web} lenn={lenMas} idx={idx}/>
             ))}

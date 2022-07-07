@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import HwDiv from "./HwDiv/HwDiv";
+//import HwDiv from "./HwDiv/HwDiv";
+import HwDiv from "../../baseComponents/HwDiv/HwDiv";
 
 function HomeworkMenu() {
     const [homeworks, setHomeworks] = useState([])

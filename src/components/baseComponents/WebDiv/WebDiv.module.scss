@@ -1,17 +1,26 @@
 .webdiv {
   margin-left: 1%;
   padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
 }
 .border {
   padding: 1%;
   margin-left: 1%;
   padding-bottom: 0;
   border-bottom: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
 }
 .buttonConnect {
-  display: inline-block;
+  //display: inline-block;
+  display: block;
+  margin-left: 1%;
+  margin-right: 5%;
+  margin-bottom: 4%;
 }
 .button {
+  top: 25%;
   position: relative;
   margin: auto;
   -webkit-appearance: none;
@@ -24,8 +33,6 @@
   background: #FF4D4D;
   padding: 8% 16%;
   font-size: 16px;
-  margin: 5px;
-  right: 20px;
 }
 .w {
   position: relative;
@@ -42,6 +49,7 @@
   line-height: 1;
   margin-bottom: 0;
   padding-bottom: 0;
+
 }
 .timeStart {
   line-height: 0;
@@ -50,6 +58,30 @@
   margin-bottom: 30px;
 }
 .text {
-  display: inline-block;
-  width: 80%;
+  //display: inline-block;
+  //width: 80%;
+  flex-grow: 1;
+}
+
+.dopInfo {
+  width: 50px;
+  text-align: center;
+  padding: 0;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.dopInfo p {
+  font-size: 10px;
+  line-height: 0;
+}
+
+.dopInfo h3 {
+  font-size: 20px;
+  line-height: 0;
+}
+
+.formDopInfo {
+  padding: 0;
+  margin: 2px;
 }

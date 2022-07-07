@@ -6,7 +6,6 @@ import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 
 const StartMenu = () => {
     var courseId = useParams("id")
-    console.log("start menu", courseId.id)
     const [web, setWeb] = useState("")
     useEffect(() => {
         fetch(`http://127.0.0.1/get_next_webinars?course_id=${courseId.id}`)

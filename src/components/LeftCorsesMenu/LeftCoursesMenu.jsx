@@ -33,7 +33,7 @@ const LeftCoursesMenu = () => {
                 <ul className={styles.navbar}>
                 {courses.map((course, idx) => (
                     <div key={idx} className={styles.courseBlock}>
-                        <li className={styles.ul}><NavLink className={({isActive}) => isActive ? (styles.active) : ""} to={`/course/${course.course_id}/start`}>{course.name_course}, до {getDataInStr(course.payment_end)}</NavLink></li>
+                        <li className={styles.ul}><NavLink className={({isActive}) => isActive ? (styles.active) : ""} to={`/course/${course.course_id}`}>{course.name_course}, до {getDataInStr(course.payment_end)}</NavLink></li>
                     </div>
                 ))}
                 </ul>
