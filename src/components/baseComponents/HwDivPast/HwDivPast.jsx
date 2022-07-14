@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from "./HwDiv.module.scss"
+import styles from "./HwDivPast.module.scss"
+import {Link} from "react-router-dom";
 
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
@@ -15,33 +16,45 @@ function GetInfoDate(date) {
     let time = [mesDate.getHours(), mesDate.getMinutes()].map(function (x) {
         return x < 10 ? "0" + x : x
     }).join(":")
-
     if ((mesDate.getDate() == now.getDate()) && (mesDate.getMonth() == now.getMonth()) && (mesDate.getFullYear() == now.getFullYear())) {
-        return "Дедлайн Сегодня, в " + time + " мск."
+        return "Сегодня, в " + time + " мск."
     }
-    now.setDate(now.getDate() + 1)
+    now.setDate(now.getDate() - 1)
     if ((mesDate.getDate() == now.getDate()) && (mesDate.getMonth() == now.getMonth()) && (mesDate.getFullYear() == now.getFullYear())) {
-        return "Дедлайн завтра, в " + time + " мск."
+        return "Вчера, в " + time + " мск."
     }
     var vec_month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
-    return "Дедлайн " + mesDate.getDate() + " " + vec_month[mesDate.getMonth()] + " в " + time + " мск."
+    return mesDate.getDate() + " " + vec_month[mesDate.getMonth()] + " в " + time + " мск."
 }
-const HwDiv = (props) =>  {
+const HwDivPast = (props) =>  {
     var nameStyles = styles.webdiv
     if (props.lenn != props.idx){
         nameStyles = styles.border
     }
+    var timeDiv = ""
+    if (props.data.handed == true) {
+        let deadline = new Date(props.data.deadline)
+        let delivered = new Date(props.data.delivered)
+        if (delivered > deadline) {
+            timeDiv = "Сдано с опозданием " + GetInfoDate(props.data.delivered)
+        } else {
+            timeDiv = "Сдано " + GetInfoDate(props.data.delivered)
+        }
+    } else {
+        timeDiv = "Не сдано"
+    }
+
     return (
         <div className={nameStyles}>
             <div className={styles.text}>
                 <h4 className={styles.nameHw}>{props.data.homework_name}</h4>
-                <p className={styles.timeStart}>{GetInfoDate(props.data.deadline)}</p>
+                <p className={styles.timeStart}>{timeDiv}</p>
             </div>
             <div className={styles.ButtonDiv}>
-                <button className={styles.button}>Выполнить</button>
+                <Link to="/">Посмотреть</Link>
             </div>
         </div>
     );
 };
 
-export default HwDiv;
+export default HwDivPast;

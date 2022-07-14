@@ -3,7 +3,7 @@ import {useState, useEffect} from "react"
 import React from 'react';
 import {useParams} from "react-router-dom";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
-
+import mSyles from "../../../MainStyles.module.scss"
 const StartMenu = () => {
     var courseId = useParams("id")
     const [web, setWeb] = useState("")
@@ -17,7 +17,7 @@ const StartMenu = () => {
     }
     return (
     <div className={mStyles.elem}>
-        <h2>Ближайший вебинар</h2>
+        <h2 className={mStyles.zagolovoc}>Ближайший вебинар</h2>
         <WebDiv data={web[0]}></WebDiv>
     </div>
 );

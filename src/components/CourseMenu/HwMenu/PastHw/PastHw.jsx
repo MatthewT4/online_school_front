@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import {GetData} from "../../../baseComponents/baseFunctions";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 import HwDiv from "../../../baseComponents/HwDiv/HwDiv";
+import HwDivPast from "../../../baseComponents/HwDivPast/HwDivPast";
 
 const PastHw = () => {
     var cId = useParams("id")
@@ -12,16 +13,16 @@ const PastHw = () => {
     }
     var [homeworks, setHomeworks] = useState("")
     useEffect(() => {
-        GetData(`http://localhost/get_past_webinars?course_id=${courseId}`, setHomeworks)
+        GetData(`http://localhost/get_past_course_homeworks?course_id=${courseId}`, setHomeworks)
     }, [courseId])
-    if (webinars.length == 0) {
-        return <div><h2>Здесь будут отображаться выданные тебе домашки</h2></div>
+    if (homeworks.length == 0) {
+        return <div><p>Здесь будут отображаться выданные тебе домашки</p></div>
     }
     var lenMas = homeworks.length-1
     return (
         <div>
             {homeworks.map((hw, idx )=> (
-                <HwDiv key={idx} data={hw} lenn={lenMas} idx={idx}/>
+                <HwDivPast key={idx} data={hw} lenn={lenMas} idx={idx}/>
             ))}
         </div>
     );

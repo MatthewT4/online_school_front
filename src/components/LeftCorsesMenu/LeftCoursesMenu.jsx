@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./LeftCoursesMenu.module.scss"
 import {NavLink} from "react-router-dom";
-
+import mStyles from "../MainStyles.module.scss"
 function getDataInStr(data) {
     var res = data[8] + data[9]
     var month = Number(data[5]+data[6])
@@ -29,7 +29,7 @@ const LeftCoursesMenu = () => {
     return (
         <div className={styles.main}>
             <div className={styles.leftMenu}>
-                <h1>Курсы</h1>
+                <h2 className={mStyles.zagolovoc}>Курсы</h2>
                 <ul className={styles.navbar}>
                 {courses.map((course, idx) => (
                     <div key={idx} className={styles.courseBlock}>

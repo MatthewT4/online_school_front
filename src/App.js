@@ -8,16 +8,22 @@ import React from "react";
 import WebinarMenu from "./components/CourseMenu/WebinarMenu/WebinarMenu";
 import PastWebs from "./components/CourseMenu/WebinarMenu/PastWebs/PastWebs";
 import NextWebs from "./components/CourseMenu/WebinarMenu/NextWebs/NextWebs";
+import HomeworkMenu from "./components/MainMenu/HomeworkMenu/HomeworkMenu";
+import HwMenu from "./components/CourseMenu/HwMenu/HwMenu";
+import Homework from "./components/Homework/Homework";
+import Temp from "./components/Temp/Temp";
+import Auth from "./components/Auth/Auth";
+import Ant from "./components/Auth/Ant";
 
 function App() {
   return (
       <div>
-          <Header/>
-          <div className={"start"}>
-              <LeftCoursesMenu/>
-              <Routes>
-                  <Route path="/" element={<MainMenu/>}/>
-                  <Route path="/course/:id/" element={<CourseMenu/>}>
+          <Routes>
+              <Route path="/auth" element={<Auth/>}/>
+              <Route path="/ant" element={<Ant/>}/>
+              <Route path="/" element={<Temp/>}>
+                  <Route index element={<MainMenu/>}/>
+                  <Route path="course/:id/" element={<CourseMenu/>}>
                       <Route index element={<Navigate to="start" replace/>}/>
                       <Route path="start" element={<StartMenu/>}></Route>
                       <Route path="web/" element={<WebinarMenu/>}>
@@ -25,10 +31,11 @@ function App() {
                           <Route path="past" element={<PastWebs/>}/>
                           <Route path="next" element={<NextWebs/>}/>
                       </Route>
+                      <Route path="homeworks"  element={<HwMenu/>}/>
                   </Route>
-              </Routes>
-              <div className={"pysto"}></div>
-          </div>
+                  <Route path="homework/:id/" element={<Homework/>}/>
+              </Route>
+          </Routes>
       </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-//import HwDiv from "./HwDiv/HwDiv";
+//import HwDivPast from "./HwDivPast/HwDivPast";
 import HwDiv from "../../baseComponents/HwDiv/HwDiv";
 
 function HomeworkMenu() {

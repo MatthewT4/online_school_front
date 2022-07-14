@@ -15,3 +15,8 @@ body {
 .pysto {
   width: 25%;
 }
+@media screen and (max-width: 1100px) {
+  .pysto {
+    display: none;
+  }
+}
