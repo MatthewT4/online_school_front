@@ -17,8 +17,8 @@ import Ant from "./components/Auth/Ant";
 
 function App() {
   return (
-      <div>
-          <Routes>
+    <div>
+        <Routes>
               <Route path="/auth" element={<Auth/>}/>
               <Route path="/ant" element={<Ant/>}/>
               <Route path="/" element={<Temp/>}>

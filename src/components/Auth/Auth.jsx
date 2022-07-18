@@ -2,7 +2,7 @@ import React from 'react';
 function Redirect() {
     let clientId = 8219136
     let redirectUri = "http://localhost:3000/ant"
-    let url = `https://oauth.vk.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&state=payment_id=10220202`
+    let url = `https://oauth.vk.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`
     window.location.href = url;
 }
 const Auth = () => {

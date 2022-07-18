@@ -9,6 +9,12 @@ const PastWebs = () => {
     useEffect(() => {
         GetData(`http://localhost/get_past_webinars?course_id=${courseId.id}`, setWebinars)
     }, [courseId.id])
+    console.log("webinars ", webinars)
+    if (webinars == undefined) {
+        return <div>
+            <h2>Здесь будут отображаться прошедшие вебинары</h2>
+        </div>
+    }
     if (webinars.length == 0) {
         return <div>
             <h2>Здесь будут отображаться прошедшие вебинары</h2>

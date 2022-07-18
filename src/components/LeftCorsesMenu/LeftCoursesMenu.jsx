@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from "./LeftCoursesMenu.module.scss"
 import {NavLink} from "react-router-dom";
 import mStyles from "../MainStyles.module.scss"
+import {GetDataNew} from "../baseComponents/baseFunctions";
 function getDataInStr(data) {
     var res = data[8] + data[9]
     var month = Number(data[5]+data[6])
@@ -15,7 +16,10 @@ const LeftCoursesMenu = () => {
     React.useEffect(() => {
         const fenchData = async() => {
             try {
-                const response = await fetch("http://localhost/get_courses")
+                const response = await fetch("http://localhost/get_courses", {
+                    credentials: 'include', mode: 'cors', 'headers': {
+                        'cookie': document.cookie,
+                    }})
                 const data = await response.json()
                 setCourses(data)
                 console.log(data)
@@ -26,6 +30,15 @@ const LeftCoursesMenu = () => {
         }
         fenchData()
     }, [])
+/*
+    useEffect(() => {
+        let data = GetDataNew("http://localhost/get_courses")
+        console.log("data:", data)
+        setCourses(data)
+    }, [])*/
+    if (courses == "error") {
+        return (<div><h3>Упс, похоже что-то пошло не так</h3></div>)
+    }
     return (
         <div className={styles.main}>
             <div className={styles.leftMenu}>
