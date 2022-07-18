@@ -26,12 +26,12 @@
 .button {
   //position: relative;
   //margin: auto;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  /*-webkit-appearance: none;
+  -moz-appearance: none;*/
+  text-decoration: none;
   appearance: none;
   border: 0;
   border-radius: 50px;
-  background-color: #ccc;
   color: white;
   background: #FF4D4D;
   padding: 8% 16%;

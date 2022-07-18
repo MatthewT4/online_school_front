@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from "./HwDiv.module.scss"
 import {GetInfoDate} from "../baseFunctions";
+import {Link} from "react-router-dom";
+
 
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
@@ -18,7 +20,7 @@ const HwDiv = (props) =>  {
                 <p className={styles.timeStart}>Дедлайн {GetInfoDate(props.data.deadline)}</p>
             </div>
             <div className={styles.ButtonDiv}>
-                <button className={styles.button}>Выполнить</button>
+                <Link className={styles.button} to="">Выполнить</Link>
             </div>
         </div>
     );

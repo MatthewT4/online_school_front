@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {GetData} from "../baseComponents/baseFunctions";
+import {GetData, PostData} from "../baseComponents/baseFunctions";
 import {useParams} from "react-router-dom";
 import WebDiv from "../baseComponents/WebDiv/WebDiv";
 import UnhandTask from "./test/UnhandTask/UnhandTask";
@@ -26,6 +26,24 @@ const Homework = () => {
         userAnswers[idx] = answer
         console.log(userAnswers)
     }
+    function PushAnswers() {
+        let index;
+        let ret = []
+        for (index = 0; index < userAnswers.length; ++index) {
+            let task = {
+                "number": index + 1,
+                "user_answer": userAnswers[index]
+            }
+            ret.push(task)
+        }
+        let final_res = {
+            "homework_id": homeworkId,
+            "answers": ret
+        }
+        let json = JSON.stringify(final_res);
+        let code = PostData("/submit_homework", json)
+        console.log("code: ", code)
+    }
     if (homework.handed) {
         return (
             ""
@@ -41,6 +59,9 @@ const Homework = () => {
                 {homework.tasks.map((task, idx )=> (
                     <UnhandTask key={idx} data={task} func={SetAnswer}/>
                 ))}
+                <div style={{display:"flex", justifyContent: "center"}}>
+                    <button className={styles.button} onClick={PushAnswers}>Отправить на проверку</button>
+                </div>
             </div>
         );
     }

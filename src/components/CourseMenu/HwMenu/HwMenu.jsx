@@ -7,11 +7,11 @@ const HwMenu = () => {
     return (
         <div>
             <div className={mStyles.elem}>
-                <h2>Текушие домашки</h2>
+                <h2 className={mStyles.zagolovoc}>Текушие домашки</h2>
                 <CurrectHw/>
             </div>
             <div className={mStyles.elem}>
-                <h2>Прошедшие домашки</h2>
+                <h2 className={mStyles.zagolovoc}>Прошедшие домашки</h2>
                 <PastHw />
             </div>
         </div>

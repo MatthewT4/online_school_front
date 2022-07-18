@@ -1,3 +1,20 @@
 .nameHw {
   margin-top: 0;
 }
+
+.button {
+  //position: relative;
+  //margin: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  //text-decoration: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50px;
+  color: white;
+  background: #0099ea;
+  padding: 2% 4%;
+  font-size: 20px;
+  display: inline-block;
+  position: relative;
+}

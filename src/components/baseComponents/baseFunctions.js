@@ -3,7 +3,7 @@ import $ from "jquery";
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
 }
-
+export const domain = "http://localhost"
 export function GetInfoDate(date) {
     var mesDate = new Date(date)
     let now = new Date()
@@ -22,6 +22,33 @@ export function GetInfoDate(date) {
     }
     var vec_month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
     return mesDate.getDate() + " " + vec_month[mesDate.getMonth()] + " в " + time + " мск."
+}
+export function PostData(url, data) {
+    /*fetch(url, {
+        credentials: 'include', mode: 'cors', 'headers': {
+            'cookie': document.cookie,
+        }})
+      .then(res => {res.json()})
+      .then(InData => setFunc(InData))
+  return*/
+    $.ajax({
+        xhrFields: { withCredentials: true },
+        crossDomain: true,
+        type: 'POST',
+        url: domain+url,
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            return 200
+        },
+        error: function (jqXHR) {
+            if (jqXHR.status === 401) {
+                window.location.href = "/auth";
+            } else {
+                return jqXHR.status
+            }
+        }
+    });
 }
 
 export function GetData(url, setFunc) {

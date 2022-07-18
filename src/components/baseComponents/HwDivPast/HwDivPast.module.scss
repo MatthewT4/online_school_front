@@ -20,20 +20,21 @@
   display: inline-block;
   padding: 10px;
   margin-top: 0;
-  margin-right: 10px;
+  margin-right: 20px;
 
 }
 .button {
+  display: inline-block;
   //position: relative;
   //margin: auto;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  text-decoration: none;
+  /*-webkit-appearance: none;
+  -moz-appearance: none;*/
   appearance: none;
   border: 0;
   border-radius: 50px;
-  background-color: #ccc;
-  color: white;
-  background: #FF4D4D;
+  color: #6c6c6c;
+  background: rgb(224, 224, 224);
   padding: 8% 16%;
   font-size: 16px;
   position: relative;
@@ -42,9 +43,32 @@
   position: relative;
 }
 .button:hover {
-  background: #CC0000;
+  color: #565656;
+  background: #afafaf;
 }
 .button:focus {
+  background: #FB9191;
+}
+.activeButton {
+  display: inline-block;
+  //position: relative;
+  //margin: auto;
+  /*-webkit-appearance: none;
+  -moz-appearance: none;*/
+  text-decoration: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50px;
+  color: white;
+  background: #FF4D4D;
+  padding: 8% 16%;
+  font-size: 16px;
+  position: relative;
+}
+.activeButton:hover {
+  background: #CC0000;
+}
+.activeButton:focus {
   background: #FB9191;
 }
 .nameHw {

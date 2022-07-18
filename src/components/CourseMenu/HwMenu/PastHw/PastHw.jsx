@@ -4,6 +4,7 @@ import {GetData} from "../../../baseComponents/baseFunctions";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 import HwDiv from "../../../baseComponents/HwDiv/HwDiv";
 import HwDivPast from "../../../baseComponents/HwDivPast/HwDivPast";
+import styles from "./PastHw.module.scss";
 
 const PastHw = () => {
     var cId = useParams("id")
@@ -16,7 +17,7 @@ const PastHw = () => {
         GetData(`http://localhost/get_past_course_homeworks?course_id=${courseId}`, setHomeworks)
     }, [courseId])
     if (homeworks.length == 0) {
-        return <div><p>Здесь будут отображаться выданные тебе домашки</p></div>
+        return <div style={{display:"flex", justifyContent: "center"}}><p className={styles.gr}>Здесь будут отображаться сданные тобой домашки</p></div>
     }
     var lenMas = homeworks.length-1
     return (

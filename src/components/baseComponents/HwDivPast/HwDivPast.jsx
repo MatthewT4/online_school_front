@@ -31,6 +31,15 @@ const HwDivPast = (props) =>  {
     if (props.lenn != props.idx){
         nameStyles = styles.border
     }
+    let path = `/homework/${props.data.homework_id}`
+    let knopka = <div className={styles.ButtonDiv}>
+        <Link className={styles.activeButton} to={path}>Выполнить</Link>
+    </div>
+    if (props.data.handed) {
+        knopka = <div className={styles.ButtonDiv}>
+            <Link className={styles.button} to={path}>Посмотреть</Link>
+        </div>
+    }
     var timeDiv = ""
     if (props.data.handed == true) {
         let deadline = new Date(props.data.deadline)
@@ -50,9 +59,7 @@ const HwDivPast = (props) =>  {
                 <h4 className={styles.nameHw}>{props.data.homework_name}</h4>
                 <p className={styles.timeStart}>{timeDiv}</p>
             </div>
-            <div className={styles.ButtonDiv}>
-                <Link to="/">Посмотреть</Link>
-            </div>
+            {knopka}
         </div>
     );
 };
