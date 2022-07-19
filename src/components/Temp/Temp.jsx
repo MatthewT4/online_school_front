@@ -5,7 +5,7 @@ import {Outlet} from "react-router-dom";
 const Temp = () => {
     return (
         <div>
-            <Header/>
+            <Header menu={true}/>
             <div className={"start"}>
                 <LeftCoursesMenu/>
                 <Outlet/>

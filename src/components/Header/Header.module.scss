@@ -1,4 +1,5 @@
 .header {
+  height: 70px;
   display: flex;
   align-items: center;
   background-color: white;
@@ -7,4 +8,47 @@
 }
 .logoImage {
   height: 65px;
+}
+
+.burgerBtn {
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  cursor: pointer;
+}
+@media screen and (min-width: 1041px){
+  .burgerBtn {
+    display: none;
+  }
+}
+.burgerBtn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 35px;
+  background-color: black;
+  height: 4px;
+  border-radius: 50px;
+
+}
+.burgerBtn span {
+  content: "";
+  position: absolute;
+  top: 14px;
+  width: 35px;
+  background-color: black;
+  height: 4px;
+  border-radius: 50px;
+}
+.burgerBtn:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 35px;
+  background-color: black;
+  height: 4px;
+  border-radius: 50px;
+
 }

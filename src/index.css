@@ -19,4 +19,8 @@ body {
   .pysto {
     display: none;
   }
+}@media screen and (min-width: 1041px) {
+  .side-button-1 .side-b  {
+    display: none;
+  }
 }

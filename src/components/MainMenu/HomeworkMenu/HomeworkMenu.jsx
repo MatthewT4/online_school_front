@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 //import HwDivPast from "./HwDivPast/HwDivPast";
 import HwDiv from "../../baseComponents/HwDiv/HwDiv";
+import mStyles from "../../MainStyles.module.scss"
+import styles from "./HomeworkMenu.module.scss"
 import {GetDataNew} from "../../baseComponents/baseFunctions";
 
 function HomeworkMenu() {
@@ -23,16 +25,17 @@ function HomeworkMenu() {
         }
         fenchData()
     }, [])
+    let header = <h2 className={mStyles.zagolovoc}>Домашки</h2>
     var lenMas = homeworks.length -1
     if (homeworks.length == 0) {
-        return (<div><h2>Все домашки сданы. Молодец!</h2></div>);
+        return (<div>{header} <div className={styles.errContent}><p className={styles.gr}>Все домашки сданы. Молодец! &#128521;</p></div></div>);
     }
     if (homeworks == "error") {
-        return (<div><h3>Упс, похоже что-то пошло не так</h3></div>)
+        return (<div>{header}<div className={styles.errContent}><p className={styles.gr}>Упс, похоже что-то пошло не так &#128532;</p></div></div>)
     }
     return (
         <div>
-            <h2>Домашки</h2>
+            {header}
             {homeworks.map((hw, idx )=> (
                 <HwDiv key={idx} data={hw} lenn={lenMas} idx={idx}/>
             ))}

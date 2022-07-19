@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from "../Header/Header";
+import styles from "./Auth.module.scss"
 function Redirect() {
     let clientId = 8219136
     let redirectUri = "http://localhost:3000/ant"
@@ -8,7 +10,10 @@ function Redirect() {
 const Auth = () => {
     return (
         <div>
-            <button style={{width:400, height:200}} onClick={Redirect}>fght</button>
+            <Header menu={false}/>
+            <div className={styles.authdiv}>
+                    <button className={styles.button} onClick={Redirect}>Войти через ВКонтакте</button>
+            </div>
         </div>
     );
 };

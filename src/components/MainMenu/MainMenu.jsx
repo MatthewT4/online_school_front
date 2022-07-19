@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from "./MainMenu.module.scss"
+import mStyles from "../MainStyles.module.scss"
 import WebinarBlock from "./WebinarBlock/WebinarBlock";
 import HomeworkMenu from "./HomeworkMenu/HomeworkMenu";
 const MainMenu = () => {
     return (
-        <div className={styles.main}>
-            <div className={styles.elem}>
+        <div className={mStyles.main}>
+            <div className={mStyles.elem}>
                 <WebinarBlock/>
             </div>
-            <div className={styles.elem}>
+            <div className={mStyles.elem}>
                 <HomeworkMenu/>
             </div>
         </div>

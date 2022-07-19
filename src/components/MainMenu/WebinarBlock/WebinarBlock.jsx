@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./WebinarBlock.module.scss";
 import WebDiv from "../../baseComponents/WebDiv/WebDiv";
+import mStyles from "../../MainStyles.module.scss"
 import {GetDataNew} from "../../baseComponents/baseFunctions";
 const WebinarBlock = () => {
     const [webinars, setWebinars] = useState([])
@@ -24,16 +25,17 @@ const WebinarBlock = () => {
         }
         fenchData()
     }, [])
+    let header = <h2 className={mStyles.zagolovoc}>Вебинары сегодня</h2>
     var lenMas = webinars.length -1
     if (webinars.length == 0) {
-        return (<div><h2>Вебинаров сегодня нет 😴</h2></div>);
+        return (<div>{header}<div className={styles.errContent}><p className={styles.gr}>Вебинаров сегодня нет 😴</p></div></div>);
     }
     if (webinars == "error") {
-        return (<div><h3>Упс, похоже что-то пошло не так</h3></div>)
+        return (<div>{header}<div className={styles.errContent}><p className={styles.gr}>Упс, похоже что-то пошло не так</p></div></div>)
     }
     return (
         <div className={styles.web}>
-            <h2 className={styles.text}>Вебинары сегодня</h2>
+            {header}
             {webinars.map((web, idx )=> (
                 <WebDiv key={idx} data={web} lenn={lenMas} idx={idx}/>
             ))}
