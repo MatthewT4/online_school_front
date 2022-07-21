@@ -2,6 +2,7 @@ import React from 'react';
 import Header from "../Header/Header";
 import LeftCoursesMenu from "../LeftCorsesMenu/LeftCoursesMenu";
 import {Outlet} from "react-router-dom";
+import MobileCourseToolbar from "../CourseMenu/MobileCourseToolbar/MobileCourseToolbar";
 const Temp = () => {
     return (
         <div>

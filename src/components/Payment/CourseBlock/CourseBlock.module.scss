@@ -1,0 +1,49 @@
+.block {
+  display: flex;
+  border: 1px solid gray;
+  border-radius: 10px;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+.checkbox {
+  height: 100%;
+  padding: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.checkbox input {
+  top: 50%;
+}
+
+.period {
+  font-size: 0.7rem;
+  color: #6c6c6c;
+  margin-top: 0;
+  padding-top: 0;
+}
+.name {
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+}
+
+.pysto {
+  flex-grow: 1;
+}
+
+.price {
+  margin-right: 3px;
+}
+
+@media screen and (max-width: 460px) {
+  .name {
+    font-size: 0.8rem;
+  }
+  .price {
+    font-size: 0.7rem;
+  }
+  .period {
+    font-size: 0.56rem;
+  }
+}

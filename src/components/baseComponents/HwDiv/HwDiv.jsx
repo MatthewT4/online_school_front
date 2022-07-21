@@ -20,7 +20,7 @@ const HwDiv = (props) =>  {
                 <p className={styles.timeStart}>Дедлайн {GetInfoDate(props.data.deadline)}</p>
             </div>
             <div className={styles.ButtonDiv}>
-                <Link className={styles.button} to="">Выполнить</Link>
+                <Link className={styles.button} to={"homework/"+props.data.homework_id}>Выполнить</Link>
             </div>
         </div>
     );

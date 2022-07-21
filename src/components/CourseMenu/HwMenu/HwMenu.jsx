@@ -11,7 +11,6 @@ const HwMenu = () => {
                 <CurrectHw/>
             </div>
             <div className={mStyles.elem}>
-                <h2 className={mStyles.zagolovoc}>Прошедшие домашки</h2>
                 <PastHw />
             </div>
         </div>

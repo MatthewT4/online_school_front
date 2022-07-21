@@ -12,9 +12,9 @@ const StartMenu = () => {
     useEffect(() => {
         GetData(`http://localhost/get_next_webinars?course_id=${courseId.id}`, setWeb)
     }, [courseId.id])
-
+    let header = <h2 className={mStyles.zagolovoc}>Ближайший вебинар</h2>
     if (web == null || web.length == 0) {
-        return <div className={mStyles.elem}><h2>Все Вебинары закончились 😞</h2></div>
+        return <div className={mStyles.elem}>{header}<div className={mStyles.errContent}><p className={mStyles.gr}>Все Вебинары закончились 😞</p></div></div>
     }
     return (
     <div className={mStyles.elem}>

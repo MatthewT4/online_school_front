@@ -10,6 +10,7 @@ body {
 .start {
   display: flex;
   padding: 3%;
+  padding-left: 0;
 }
 
 .pysto {
@@ -23,4 +24,12 @@ body {
   .side-button-1 .side-b  {
     display: none;
   }
+}
+
+.white {
+  color: white;
+}
+
+.gr {
+  color: grey;
 }

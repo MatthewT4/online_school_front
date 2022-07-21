@@ -10,6 +10,7 @@
   padding-top: 0;
 }
 .elem {
+  margin-right: 3%;
   padding: 15px;
   display: block;
   background-color: white;
@@ -26,7 +27,11 @@
   border-bottom-width: 1px;
   padding-bottom: 5px;
 }
-
+@media screen and (max-width: 420px) {
+  .zagolovoc {
+    font-size: 1.2em;
+  }
+}
 .fflex {
   display: flex;
 }
@@ -35,4 +40,13 @@
 }
 .soderzanie {
   padding-left: 10px;
+}
+
+.errContent {
+  display: flex;
+  justify-content: center;
+}
+.gr {
+  color: #606060;
+  margin-top: 0;
 }

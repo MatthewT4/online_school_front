@@ -33,7 +33,18 @@
   border-top-style: solid;
   border-top-color: gray;
   border-top-width: 1px;
+  width: 100%;
+}
+
+@media screen  and (max-width: 680px){
+  .topPanel {
+    border: none;
+  }
 }
 .pysto {
   flex-grow: 1;
+}
+
+.cent {
+  display: flex;
 }

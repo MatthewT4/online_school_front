@@ -1,0 +1,57 @@
+.navbar {
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+}
+
+@media screen and (min-width: 681px) {
+  .navbar {
+    display: none;
+  }
+}
+.divElem {
+  flex-grow: 1;
+  text-align: center;
+}
+.divElem i {
+  margin: 2px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-size: 30px;
+  font-weight: normal;
+  text-decoration: none;
+
+
+}
+.divElem p {
+  margin-top: 0;
+  margin-bottom: 1px;
+  font-size: 0.6rem;
+  flex-grow: 1;
+  text-align: center;
+  text-decoration: none;
+}
+
+.activeBot > * {
+  color: black;
+}
+.activeBot {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
+.unactiveBot {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.unactiveBot > * {
+  color: gray;
+}
+
+.divKnopk {
+  outline: none;
+}

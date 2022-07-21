@@ -5,7 +5,7 @@ import {NavLink, Routes, Route, Outlet} from "react-router-dom";
 
 const WebinarMenu = () => {
     return (
-        <div className={mStyles.main}>
+        <div>
             <div className={styles.topPanel}>
                 <div className={styles.pysto}></div>
                 <div className={styles.butDiv}>

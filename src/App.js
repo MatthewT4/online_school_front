@@ -14,6 +14,7 @@ import Homework from "./components/Homework/Homework";
 import Temp from "./components/Temp/Temp";
 import Auth from "./components/Auth/Auth";
 import Ant from "./components/Auth/Ant";
+import Payment from "./components/Payment/Payment";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
               <Route path="/auth" element={<Auth/>}/>
               <Route path="/ant" element={<Ant/>}/>
+              <Route path="/payment" element={<Payment/>}/>
               <Route path="/" element={<Temp/>}>
                   <Route index element={<MainMenu/>}/>
                   <Route path="course/:id/" element={<CourseMenu/>}>

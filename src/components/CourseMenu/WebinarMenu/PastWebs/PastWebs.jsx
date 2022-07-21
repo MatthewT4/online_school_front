@@ -9,15 +9,15 @@ const PastWebs = () => {
     useEffect(() => {
         GetData(`http://localhost/get_past_webinars?course_id=${courseId.id}`, setWebinars)
     }, [courseId.id])
-    console.log("webinars ", webinars)
+    let header = <h2 className={mStyles.zagolovoc}>Прошедшие вебинары</h2>
     if (webinars == undefined) {
-        return <div>
-            <h2>Здесь будут отображаться прошедшие вебинары</h2>
+        return <div>{header}
+            <div className={mStyles.errContent}><p className={mStyles.gr}>Здесь будут отображаться прошедшие вебинары</p></div>
         </div>
     }
     if (webinars.length == 0) {
-        return <div>
-            <h2>Здесь будут отображаться прошедшие вебинары</h2>
+        return <div>{header}
+            <div className={mStyles.errContent}><p className={mStyles.gr}>Здесь будут отображаться прошедшие вебинары</p></div>
         </div>
     }
     var lenMas = webinars.length -1
