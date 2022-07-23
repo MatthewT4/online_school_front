@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from "./LeftCoursesMenu.module.scss"
 import {NavLink} from "react-router-dom";
 import mStyles from "../MainStyles.module.scss"
-import {GetDataNew} from "../baseComponents/baseFunctions";
+import {domain, GetDataNew} from "../baseComponents/baseFunctions";
 function getDataInStr(data) {
     var res = data[8] + data[9]
     var month = Number(data[5]+data[6])
@@ -16,7 +16,7 @@ const LeftCoursesMenu = () => {
     React.useEffect(() => {
         const fenchData = async() => {
             try {
-                const response = await fetch("http://localhost/get_courses", {
+                const response = await fetch(domain+"/get_courses", {
                     credentials: 'include', mode: 'cors', 'headers': {
                         'cookie': document.cookie,
                     }})
@@ -46,7 +46,7 @@ const LeftCoursesMenu = () => {
                 <ul className={styles.navbar}>
                 {courses.map((course, idx) => (
                     <div key={idx} className={styles.courseBlock}>
-                        <li className={styles.ul}><NavLink className={({isActive}) => isActive ? (styles.active) : ""} to={`/course/${course.course_id}`}>{course.name_course}, до {getDataInStr(course.payment_end)}</NavLink></li>
+                        <li className={styles.li}><NavLink className={({isActive}) => isActive ? (styles.active) : ""} to={`/course/${course.course_id}`}><div className={styles.divfl}><h4 className={styles.name} style={{margin:0, marginRight:4}}>{course.name_course}</h4><p style={{margin:0}} className={styles.dateEnd}> до {getDataInStr(course.payment_end)}</p></div></NavLink></li>
                     </div>
                 ))}
                 </ul>

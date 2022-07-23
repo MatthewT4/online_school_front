@@ -7,6 +7,7 @@
   min-width: 300px;
   margin: auto;
   padding: 3%;
+  padding-right: 0;
   padding-top: 0;
 }
 .elem {
@@ -21,7 +22,7 @@
 }
 .zagolovoc {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom-color: gray;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -48,5 +49,4 @@
 }
 .gr {
   color: #606060;
-  margin-top: 0;
 }

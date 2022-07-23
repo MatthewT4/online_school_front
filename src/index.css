@@ -2,14 +2,16 @@ body {
   background-color: #ECECEC;
   margin: 0;
   padding: 0;
-  font-family: Arial;
+  font-family: Helvetica, Arial, SansSerif;
   font-weight: bold;
+  word-wrap:break-word
 }
 
 
 .start {
   display: flex;
   padding: 3%;
+  padding-right: 0;
   padding-left: 0;
 }
 

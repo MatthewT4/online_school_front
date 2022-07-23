@@ -28,10 +28,10 @@ const WebinarBlock = () => {
     let header = <h2 className={mStyles.zagolovoc}>Вебинары сегодня</h2>
     var lenMas = webinars.length -1
     if (webinars.length == 0) {
-        return (<div>{header}<div className={styles.errContent}><p className={styles.gr}>Вебинаров сегодня нет 😴</p></div></div>);
+        return (<div>{header}<div className={mStyles.errContent}><p className={mStyles.gr}>Вебинаров сегодня нет 😴</p></div></div>);
     }
     if (webinars == "error") {
-        return (<div>{header}<div className={styles.errContent}><p className={styles.gr}>Упс, похоже что-то пошло не так</p></div></div>)
+        return (<div>{header}<div className={mStyles.errContent}><p className={mStyles.gr}>Упс, похоже что-то пошло не так</p></div></div>)
     }
     return (
         <div className={styles.web}>

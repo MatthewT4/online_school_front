@@ -5,6 +5,7 @@ import WebDiv from "../baseComponents/WebDiv/WebDiv";
 import UnhandTask from "./test/UnhandTask/UnhandTask";
 import mStyles from "../MainStyles.module.scss"
 import styles from "./Homework.module.scss"
+import HandTask from "./test/HandTask/HandTask";
 const Homework = () => {
     let userAnswers = []
     const [homework, setHomework] = useState("")
@@ -46,7 +47,16 @@ const Homework = () => {
     }
     if (homework.handed) {
         return (
-            ""
+            <div className={mStyles.main}>
+                <div className={mStyles.fflex}>
+                    <div className={mStyles.pysto}/>
+                    <h2 className={styles.nameHw}>{homework.name}</h2>
+                    <div className={mStyles.pysto}/>
+                </div>
+                {homework.tasks.map((task, idx )=> (
+                    <HandTask key={idx} data={task} func={SetAnswer}/>
+                ))}
+            </div>
         )
     } else {
         return (

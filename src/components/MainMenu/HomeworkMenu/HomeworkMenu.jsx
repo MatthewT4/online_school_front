@@ -28,10 +28,10 @@ function HomeworkMenu() {
     let header = <h2 className={mStyles.zagolovoc}>Домашки</h2>
     var lenMas = homeworks.length -1
     if (homeworks.length == 0) {
-        return (<div>{header} <div className={styles.errContent}><p className={styles.gr}>Все домашки сданы. Молодец! &#128521;</p></div></div>);
+        return (<div>{header} <div className={mStyles.errContent}><p className={mStyles.gr}>Все домашки сданы. Молодец! &#128521;</p></div></div>);
     }
     if (homeworks == "error") {
-        return (<div>{header}<div className={styles.errContent}><p className={styles.gr}>Упс, похоже что-то пошло не так &#128532;</p></div></div>)
+        return (<div>{header}<div className={mStyles.errContent}><p className={mStyles.gr}>Упс, похоже что-то пошло не так &#128532;</p></div></div>)
     }
     return (
         <div>
