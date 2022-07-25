@@ -7,10 +7,10 @@ const CourseBlock = ({courseName, courseId, periodId, coursePeriod, flagBuyCours
     }
     return (
         <div className={styles.block}>
-            {<div className={styles.checkbox}>
-                <input type="checkbox" defaultChecked={buyCourse} name={courseId + "-" + periodId} onClick={editbBuyCourse}/>
+            {<div className={styles.checkboxDiv}>
+                <input className={styles.checkbox} type="checkbox" defaultChecked={buyCourse} name={courseId + "-" + periodId} onClick={editbBuyCourse}/>
             </div>}
-            <div>
+            <div className={styles.infDiv}>
                 <h3 className={styles.name}>{courseName}</h3>
                 <p className={styles.period}>{coursePeriod}</p>
             </div>

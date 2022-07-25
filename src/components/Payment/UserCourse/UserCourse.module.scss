@@ -1,0 +1,27 @@
+.buttonConnect {
+  //display: inline-block;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.button {
+  position: relative;
+  margin: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background-color: #ccc;
+  color: white;
+  background: #ea1e1e;
+  padding: 6px 12px;
+  font-size: 24px;
+}
+
+.button:hover {
+  background: #CC0000;
+}
+.button:focus {
+  background: #FB9191;
+}
