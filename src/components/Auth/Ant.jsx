@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import $ from 'jquery';
+import {domain} from "../baseComponents/baseFunctions";
 
 function getAllUrlParams(url) {
 
@@ -72,7 +73,7 @@ const Ant = () => {
     let data
     useEffect(() => {
         async function Tess() {
-            let url = `http://127.0.0.1/auth/login?code=${codeVK}&redirect_uri=http://localhost:3000/ant`
+            let url = domain + `/auth/login?code=${codeVK}&redirect_uri=http://localhost:3000/ant`
             data = await fetch(url, {
                 credentials: "include",
                 mode: 'cors',
@@ -104,7 +105,7 @@ const Ant = () => {
     },[codeVK]);
     return (
         <div>
-            <p>{codeVK}</p>
+            <p>загрузка...</p>
         </div>
     );
 };

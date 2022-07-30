@@ -15,6 +15,8 @@ import Temp from "./components/Temp/Temp";
 import Auth from "./components/Auth/Auth";
 import Ant from "./components/Auth/Ant";
 import Payment from "./components/Payment/Payment";
+import PayError from "./components/Payment/PayError/PayError";
+import NoPayForm from "./components/Payment/NoPayForm/NoPayForm";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
               <Route path="/auth" element={<Auth/>}/>
               <Route path="/ant" element={<Ant/>}/>
               <Route path="/payment" element={<Payment/>}/>
+              <Route path="/pay_error" element={<PayError/>}/>
+              <Route path="/no_pay_info" element={<NoPayForm/>}/>
               <Route path="/" element={<Temp/>}>
                   <Route index element={<MainMenu/>}/>
                   <Route path="course/:id/" element={<CourseMenu/>}>

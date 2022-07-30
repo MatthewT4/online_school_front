@@ -15,13 +15,14 @@ const NextWebs = () => {
     if (webinars.length == 0) {
         console.log("next", webinars)
         return <div>
+            <h2 className={mStyles.zagolovoc}>Будущие Вебинары</h2>
             <h2>Упс, похоже все вебинары закончились 😅</h2>
         </div>
     }
     var lenMas = webinars.length -1
     return (
         <div>
-            <h2>Будущие Вебинары</h2>
+            <h2 className={mStyles.zagolovoc}>Будущие Вебинары</h2>
             {webinars.map((web, idx )=> (
                 <WebDiv key={idx} data={web} lenn={lenMas} idx={idx}/>
             ))}

@@ -23,7 +23,10 @@ export function GetInfoDate(date) {
     var vec_month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
     return mesDate.getDate() + " " + vec_month[mesDate.getMonth()] + " в " + time + " мск."
 }
-export function PostData(url, data) {
+export async function PostData(url, data) {
+    let ret = {
+        code_req: 0,
+        dt: ""}
     /*fetch(url, {
         credentials: 'include', mode: 'cors', 'headers': {
             'cookie': document.cookie,
@@ -31,24 +34,28 @@ export function PostData(url, data) {
       .then(res => {res.json()})
       .then(InData => setFunc(InData))
   return*/
-    $.ajax({
+    await $.ajax({
         xhrFields: { withCredentials: true },
         crossDomain: true,
         type: 'POST',
         url: domain+url,
         data: data,
         dataType: 'json',
-        success: function (data) {
-            return 200
+        success: function (dat) {
+            ret.code_req = 200
+            ret.dt = dat
         },
         error: function (jqXHR) {
             if (jqXHR.status === 401) {
                 window.location.href = "/auth";
             } else {
-                return jqXHR.status
+                console.log("errr")
+                ret.code_req = jqXHR.status
+                ret.dt = jqXHR.data
             }
         }
     });
+    return ret
 }
 
 export function GetData(url, setFunc) {

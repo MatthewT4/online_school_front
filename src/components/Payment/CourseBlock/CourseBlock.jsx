@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import styles from "./CourseBlock.module.scss"
-const CourseBlock = ({courseName, courseId, periodId, coursePeriod, flagBuyCourse, Price}) => {
+const CourseBlock = ({courseName, courseId, periodId, coursePeriod, flagBuyCourse, Price, setBuy}) => {
+    console.log("flag:", flagBuyCourse)
     const [buyCourse, setBuyCourse] = useState(flagBuyCourse)
-    function editbBuyCourse() {
+    function editBuyCourse() {
+        setBuy(courseId, !buyCourse)
         setBuyCourse(!buyCourse)
     }
     return (
         <div className={styles.block}>
             {<div className={styles.checkboxDiv}>
-                <input className={styles.checkbox} type="checkbox" defaultChecked={buyCourse} name={courseId + "-" + periodId} onClick={editbBuyCourse}/>
+                <input className={styles.checkbox} type="checkbox" defaultChecked={flagBuyCourse} name={courseId + "-" + periodId} onClick={editBuyCourse}/>
             </div>}
             <div className={styles.infDiv}>
                 <h3 className={styles.name}>{courseName}</h3>
