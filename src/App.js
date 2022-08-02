@@ -17,6 +17,8 @@ import Ant from "./components/Auth/Ant";
 import Payment from "./components/Payment/Payment";
 import PayError from "./components/Payment/PayError/PayError";
 import NoPayForm from "./components/Payment/NoPayForm/NoPayForm";
+import CoursesConnect from "./components/Payment/CoursesConnect/CoursesConnect";
+import InviteGroup from "./components/Payment/InviteGroup/InviteGroup";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
               <Route path="/payment" element={<Payment/>}/>
               <Route path="/pay_error" element={<PayError/>}/>
               <Route path="/no_pay_info" element={<NoPayForm/>}/>
+              <Route path="/course_connect" element={<CoursesConnect/>}/>
+              <Route path="/invite_group/:id" element={<InviteGroup/>}/>
               <Route path="/" element={<Temp/>}>
                   <Route index element={<MainMenu/>}/>
                   <Route path="course/:id/" element={<CourseMenu/>}>

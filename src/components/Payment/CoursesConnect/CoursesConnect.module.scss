@@ -1,0 +1,77 @@
+.helpMenu {
+  font-weight: normal;
+}
+
+.blockCourse {
+  display: flex;
+  border-radius: 10px;
+  background-color: #efefef;
+  margin-top: 4px;
+}
+
+.name {
+  flex-grow: 1;
+  margin-left: 5px;
+}
+.buttonConnect {
+  //display: inline-block;
+  display: block;
+  margin-left: 1%;
+  margin-right: 5%;
+  margin-bottom: 4%;
+}
+
+.button {
+  top: 60%;
+  position: relative;
+  margin: auto;
+  text-decoration: none;
+  border: 0;
+  border-radius: 50px;
+  background-color: #ccc;
+  color: white;
+  background: #FF4D4D;
+  padding: 6% 12%;
+  font-size: 22px;
+  white-space: nowrap;
+}
+@media screen and (max-width: 650px) {
+  .buttonConnect {
+    margin-right: 7%;
+    margin-bottom: 6%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .buttonConnect {
+    margin-right: 10%;
+    margin-bottom: 7%;
+  }
+  .name {
+    font-size: 1.3em;
+  }
+  .button {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .buttonConnect {
+    margin-bottom: 9%;
+  }
+  .name {
+    font-size: 1.1em;
+  }
+  .button {
+    font-size: 19px;
+  }
+}
+
+.w {
+  position: relative;
+}
+.button:hover {
+  background: #CC0000;
+}
+.button:focus {
+  background: #FB9191;
+}

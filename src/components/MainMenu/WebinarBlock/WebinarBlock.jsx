@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./WebinarBlock.module.scss";
 import WebDiv from "../../baseComponents/WebDiv/WebDiv";
+import domain from "../../baseComponents/WebDiv/WebDiv";
 import mStyles from "../../MainStyles.module.scss"
 import {GetDataNew} from "../../baseComponents/baseFunctions";
 const WebinarBlock = () => {
@@ -10,7 +11,7 @@ const WebinarBlock = () => {
         setWebinars(data)*/
         const fenchData = async() => {
             try {
-                const response = await fetch("http://localhost/get_today_webinars", {
+                const response = await fetch(domain+"/get_today_webinars", {
                     credentials: 'include', mode: 'cors', 'headers': {
                         'cookie': document.cookie,
                     }})

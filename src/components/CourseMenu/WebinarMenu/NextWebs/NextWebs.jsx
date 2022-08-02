@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import mStyles from "../../../MainStyles.module.scss"
-import {GetData} from "../../../baseComponents/baseFunctions.js"
+import {GetData, domain} from "../../../baseComponents/baseFunctions.js"
 import {useParams} from "react-router-dom";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 const NextWebs = () => {
@@ -8,7 +8,7 @@ const NextWebs = () => {
     var [webinars, setWebinars] = useState("")
     useEffect(() => {
         const ass = async () => {
-            await GetData(`http://localhost/get_next_webinars?course_id=${courseId.id}`, setWebinars)
+            await GetData(domain+`/get_next_webinars?course_id=${courseId.id}`, setWebinars)
         }
         ass()
     }, [courseId.id])

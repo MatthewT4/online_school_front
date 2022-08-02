@@ -22,8 +22,20 @@ function getCoursePeriod(date) {
     return mesDate.getDate() + " " + vec_month[mesDate.getMonth()]
 }
 const UserCourse = ({userCour, awailCour, rend, setRend}) => {
+    const navi = useNavigate()
     let buyCourse = {}
     const [payActive, setPayActive] = useState(true)
+    if (userCour == null) {
+        userCour = []
+    }
+    if (awailCour == null) {
+        awailCour = []
+    }
+    if (userCour.length === 0 && awailCour.length === 0) {
+        return (
+            <p>Похоже сейчас нет доступных для записи курсов</p>
+        )
+    }
     for (let i = 0; i < userCour.length; i++) {
         buyCourse[userCour[i].course_id] = {
             period_id: userCour[i].period_id,
@@ -55,7 +67,6 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
             setPayActive(!payActive)
         }*/
     }
-    const navi = useNavigate()
     async function PushPaymentCourses() {
         let ret = []
         for (var key of Object.keys(buyCourse)) {

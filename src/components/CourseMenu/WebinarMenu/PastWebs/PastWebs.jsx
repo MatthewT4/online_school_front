@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {GetData} from "../../../baseComponents/baseFunctions.js"
+import {GetData, domain} from "../../../baseComponents/baseFunctions.js"
 import {useParams} from "react-router-dom";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 import mStyles from "../../../MainStyles.module.scss";
@@ -7,7 +7,7 @@ const PastWebs = () => {
     var courseId = useParams("id")
     var [webinars, setWebinars] = useState("")
     useEffect(() => {
-        GetData(`http://localhost/get_past_webinars?course_id=${courseId.id}`, setWebinars)
+        GetData(domain+`/get_past_webinars?course_id=${courseId.id}`, setWebinars)
     }, [courseId.id])
     let header = <h2 className={mStyles.zagolovoc}>Прошедшие вебинары</h2>
     if (webinars == undefined) {

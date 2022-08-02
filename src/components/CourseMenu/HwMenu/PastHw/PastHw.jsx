@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {GetData} from "../../../baseComponents/baseFunctions";
+import {GetData, domain} from "../../../baseComponents/baseFunctions";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 import HwDiv from "../../../baseComponents/HwDiv/HwDiv";
 import HwDivPast from "../../../baseComponents/HwDivPast/HwDivPast";
@@ -16,7 +16,7 @@ const PastHw = () => {
     var [homeworks, setHomeworks] = useState("")
     let header = <h2 className={mStyles.zagolovoc}>Прошедшие домашки</h2>
     useEffect(() => {
-        GetData(`http://localhost/get_past_course_homeworks?course_id=${courseId}`, setHomeworks)
+        GetData(domain+`/get_past_course_homeworks?course_id=${courseId}`, setHomeworks)
     }, [courseId])
     if (homeworks.length == 0) {
         return <div>{header}<div className={mStyles.errContent}><p className={mStyles.gr}>Здесь будут отображаться прошедшие домашки</p></div></div>

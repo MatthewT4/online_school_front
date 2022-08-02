@@ -4,13 +4,13 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import WebDiv from "../../../baseComponents/WebDiv/WebDiv";
 import mSyles from "../../../MainStyles.module.scss"
-import {GetData} from "../../../baseComponents/baseFunctions";
+import {GetData, domain} from "../../../baseComponents/baseFunctions";
 const StartMenu = () => {
     var courseId = useParams("id")
     const [web, setWeb] = useState("")
 
     useEffect(() => {
-        GetData(`http://localhost/get_next_webinars?course_id=${courseId.id}`, setWeb)
+        GetData(domain+`/get_next_webinars?course_id=${courseId.id}`, setWeb)
     }, [courseId.id])
     let header = <h2 className={mStyles.zagolovoc}>Ближайший вебинар</h2>
     if (web == null || web.length == 0) {

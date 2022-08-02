@@ -19,7 +19,9 @@ const Header = ({menu}) => {
                     <img className={styles.logoImage} src={logoImage} alt=''/>
                 </div>
             </header>
-            <MobileMenu active={mobMenuActive} setActive={setMobMenuActive}/>
+            {menu ?
+                <MobileMenu active={mobMenuActive} setActive={setMobMenuActive}/> : ""
+            }
         </div>
     )};
 

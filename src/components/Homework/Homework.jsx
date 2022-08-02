@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {GetData, PostData} from "../baseComponents/baseFunctions";
+import {GetData, PostData, domain} from "../baseComponents/baseFunctions";
 import {useParams} from "react-router-dom";
 import WebDiv from "../baseComponents/WebDiv/WebDiv";
 import UnhandTask from "./test/UnhandTask/UnhandTask";
@@ -13,7 +13,7 @@ const Homework = () => {
     let homeworkId = Number(hId.id)
     console.log(homeworkId)
     useEffect(() => {
-        GetData(`http://localhost/get_homework?homework_id=${homeworkId}`, setHomework)
+        GetData(domain+`/get_homework?homework_id=${homeworkId}`, setHomework)
 
     }, [homeworkId])
     if (homework.length == 0) {

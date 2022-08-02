@@ -84,72 +84,28 @@ export function GetData(url, setFunc) {
         }
     });
 }
-export function GetDataNew(url) {
-    try {
-        fetch(url, {
-            credentials: 'include', mode: 'cors', 'headers': {
-                'cookie': document.cookie,
-            }
-        }).then(response => {
-            if (!response.ok) {
-                if (response.status == 401) {
-                    window.location.href = "/auth";
-                }
-                else {
-                    return "error"
-                }
-            }
-            return response.json();
-        })
-        /*function ff() {
-            const response = fetch(url, {
-                credentials: 'include', mode: 'cors', 'headers': {
-                    'cookie': document.cookie,
-                }
-            })
-            //console.log("dddd: ", data)
-            /*const response = await fetch(url, {
-                credentials: 'include', mode: 'cors', 'headers': {
-                    'cookie': document.cookie,
-                },
-            });*/
-            /*if (response.ok) {
-                const data = response.json()
-                console.log("d2: ", data)
-                return data
-            } else {
-                console.log("status: ", response.status)
-                if (response.status == 401) {
-                    console.log("111, 401")
-                    window.location.href = "/auth";
-                } else {
-                    return "error"
-                }
-            }
-        }
-        ff()*/
-    }
-    catch (error) {
-        console.log("eeeeeerrror")
-        return "error"
-    }/*
-    $.ajax({
-        url: url,
-        type: 'GET',
-        success: function(res) {
-            console.log(res);
-            return res;
-        },
+export async function GetDataNew(url, payFunc) {
+    let dt = ""
+    await $.ajax({
+        xhrFields: { withCredentials: true },
         crossDomain: true,
-        xhrFields: {
-            withCredentials: true,
+        type: 'GET',
+        url: domain+url,
+        dataType: 'json',
+        success: function (data) {
+            dt = data
         },
-        error: function (jqXHR, exception) {
-            if (jqXHR.status == 401) {
-                window.location.href = "/auth";
-            } else if (jqXHR.status == 500) {
-                return "error"
+        error: function (jqXHR) {
+            if (jqXHR.status === 401) {
+                if (payFunc) {
+                    window.location.href = "/auth?pay=true"
+                } else {
+                    window.location.href = "/auth";
+                }
+            } else {
+                dt = 0
             }
         }
-    });*/
+    });
+    return dt
 }

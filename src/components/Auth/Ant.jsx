@@ -82,7 +82,13 @@ const Ant = () => {
             console.log("d ", d)
             console.log("body: ",d.body)
             document.cookie = d.body
-            window.location.href = "/";
+            let typeRedirect = getAllUrlParams(search).state
+            console.log(typeRedirect, typeRedirect == "pay")
+            if (typeRedirect == "pay") {
+                window.location.href = "/course_connect";
+            } else {
+                window.location.href = "/";
+            }
         }
         Tess()
        /* let url = `http://127.0.0.1/auth/login?code=${codeVK}&redirect_uri=http://localhost:3000/ant`

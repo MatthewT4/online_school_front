@@ -1,8 +1,10 @@
 import mStyles from "../../MainStyles.module.scss"
 import Header from "../../Header/Header";
 import styles from "./NoPayForm.module.scss"
+import {useNavigate} from "react-router-dom";
 
 const PayError = () => {
+    const navi = useNavigate()
     return (
         <div>
             <Header menu={false}/>
@@ -15,7 +17,7 @@ const PayError = () => {
                     <p>Мы обязательно отправим вам уведомление о восстановлении работы формы и ссылку на оплату в виде сообщения во ВКонтакте.</p>
                     <p>С уважением, команда Лицей15</p>
                     <div className={styles.buttonDiv}>
-                        <button className={styles.button}>Перейти к подкючению курсов</button>
+                        <button className={styles.button} onClick={() => {navi("course_connect")}}>Перейти к подкючению курсов</button>
                     </div>
                 </div>
             </div>
