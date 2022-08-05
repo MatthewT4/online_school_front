@@ -4,6 +4,7 @@ function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
 }
 export const domain = "http://localhost"
+//export const domain = "https://serv.lyc15.ru"
 export function GetInfoDate(date) {
     var mesDate = new Date(date)
     let now = new Date()
@@ -40,7 +41,7 @@ export async function PostData(url, data) {
         type: 'POST',
         url: domain+url,
         data: data,
-        dataType: 'json',
+        //dataType: 'json',
         success: function (dat) {
             ret.code_req = 200
             ret.dt = dat
@@ -49,7 +50,7 @@ export async function PostData(url, data) {
             if (jqXHR.status === 401) {
                 window.location.href = "/auth";
             } else {
-                console.log("errr")
+                console.log("errr", jqXHR.status, jqXHR.data)
                 ret.code_req = jqXHR.status
                 ret.dt = jqXHR.data
             }

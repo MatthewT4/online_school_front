@@ -12,11 +12,11 @@ const NextWebs = () => {
         }
         ass()
     }, [courseId.id])
-    if (webinars.length == 0) {
+    if (webinars == null || webinars.length == 0) {
         console.log("next", webinars)
         return <div>
             <h2 className={mStyles.zagolovoc}>Будущие Вебинары</h2>
-            <h2>Упс, похоже все вебинары закончились 😅</h2>
+            <div className={mStyles.errContent}><p className={mStyles.gr}>Упс, похоже все вебинары закончились 😅</p></div>
         </div>
     }
     var lenMas = webinars.length -1

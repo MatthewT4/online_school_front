@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./WebinarBlock.module.scss";
 import WebDiv from "../../baseComponents/WebDiv/WebDiv";
-import domain from "../../baseComponents/WebDiv/WebDiv";
+import {domain} from "../../baseComponents/baseFunctions";
 import mStyles from "../../MainStyles.module.scss"
 import {GetDataNew} from "../../baseComponents/baseFunctions";
 const WebinarBlock = () => {

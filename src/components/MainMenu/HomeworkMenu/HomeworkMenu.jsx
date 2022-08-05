@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 //import HwDivPast from "./HwDivPast/HwDivPast";
 import HwDiv from "../../baseComponents/HwDiv/HwDiv";
-import domain from "../../baseComponents/HwDiv/HwDiv";
+import {domain} from "../../baseComponents/baseFunctions";
 import mStyles from "../../MainStyles.module.scss"
 import styles from "./HomeworkMenu.module.scss"
 import {GetDataNew} from "../../baseComponents/baseFunctions";
@@ -11,7 +11,7 @@ function HomeworkMenu() {
     React.useEffect(() => {
         const fenchData = async() => {
             try {
-                const response = await fetch(domain+"/get_next_homeworks", {
+                const response = await fetch(domain + "/get_next_homeworks", {
                     credentials: 'include', mode: 'cors', 'headers': {
                         'cookie': document.cookie,
                     }})

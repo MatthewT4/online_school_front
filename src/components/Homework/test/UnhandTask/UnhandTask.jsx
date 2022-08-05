@@ -21,7 +21,7 @@ const UnhandTask = (props) => {
                 <div className={styles.answer}>
                     <p style={{ marginRight:5}}>Ответ:</p>
                     <form>
-                    <input className={styles.inp} name={inpName} type="text" value={answer} onChange={event => {setAns(event.target.value)}}/>
+                    <input className={styles.inp} name={inpName} type="text" value={answer} onChange={event => {setAns(event.target.value)}} autoComplete="off"/>
                     </form>
                 </div>
             </div>

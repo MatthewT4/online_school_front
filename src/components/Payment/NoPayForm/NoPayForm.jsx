@@ -17,7 +17,7 @@ const PayError = () => {
                     <p>Мы обязательно отправим вам уведомление о восстановлении работы формы и ссылку на оплату в виде сообщения во ВКонтакте.</p>
                     <p>С уважением, команда Лицей15</p>
                     <div className={styles.buttonDiv}>
-                        <button className={styles.button} onClick={() => {navi("course_connect")}}>Перейти к подкючению курсов</button>
+                        <button className={styles.button} onClick={() => {navi("/course_connect")}}>Перейти к подкючению курсов</button>
                     </div>
                 </div>
             </div>

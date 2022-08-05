@@ -73,7 +73,8 @@ const Ant = () => {
     let data
     useEffect(() => {
         async function Tess() {
-            let url = domain + `/auth/login?code=${codeVK}&redirect_uri=http://localhost:3000/ant`
+            //let url = domain + `/auth/login?code=${codeVK}&redirect_uri=http://localhost:3000/ant`
+            let url = domain + `/auth/login?code=${codeVK}&redirect_uri=https://lk.lyc15.ru/ant`
             data = await fetch(url, {
                 credentials: "include",
                 mode: 'cors',
