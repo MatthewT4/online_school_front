@@ -18,11 +18,10 @@
   display: block;
   margin-left: 1%;
   margin-right: 5%;
-  margin-bottom: 4%;
 }
 
 .button {
-  top: 60%;
+  top: 35%;
   position: relative;
   margin: auto;
   text-decoration: none;
@@ -32,37 +31,42 @@
   color: white;
   background: #FF4D4D;
   padding: 6% 12%;
-  font-size: 22px;
+  font-size: 18px;
   white-space: nowrap;
 }
+/*
 @media screen and (max-width: 650px) {
   .buttonConnect {
     margin-right: 7%;
     margin-bottom: 6%;
   }
+}*/
+@media screen and (max-width: 550px) {
+  .buttonConnect {
+    margin-right: 7%;
+  }
 }
 @media screen and (max-width: 460px) {
   .buttonConnect {
     margin-right: 10%;
-    margin-bottom: 7%;
   }
   .name {
-    font-size: 1.3em;
+    font-size: 1em;
   }
   .button {
-    font-size: 20px;
+    font-size: 16px;
+  }
+  .buttonDivRedirect {
+    margin-top: 15px;
   }
 }
 
 @media screen and (max-width: 360px) {
-  .buttonConnect {
-    margin-bottom: 9%;
-  }
   .name {
-    font-size: 1.1em;
+    font-size: 0.9em;
   }
   .button {
-    font-size: 19px;
+    font-size: 14px;
   }
 }
 
@@ -73,5 +77,35 @@
   background: #CC0000;
 }
 .button:focus {
+  background: #FB9191;
+}
+
+.buttonDivRedirect {
+  display: flex;
+  justify-content: center;
+  margin-left: 1%;
+  margin-right: 5%;
+  margin-top: 30px;
+  margin-bottom: 3%;
+}
+.buttonRedirect {
+  position: relative;
+  margin: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 50px;
+  background-color: #ccc;
+  color: white;
+  background: #FF4D4D;
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+.buttonRedirect:hover {
+  background: #CC0000;
+}
+.buttonRedirect:focus {
   background: #FB9191;
 }

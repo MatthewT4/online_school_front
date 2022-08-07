@@ -27,7 +27,11 @@ const WebDiv = (props) => {
         </form></div>
     }
     if (props.data.hasOwnProperty("web_link")) {
-        online = <div className={styles.buttonConnect}><button className={styles.button}>Подключиться</button></div>
+        //online = <div className={styles.buttonConnect}><button className={styles.button} href={props.data.web_link} target="_blank">Подключиться</button></div>
+        online = <div className={styles.buttonConnect}>
+            <form action={props.data.web_link} target="_blank">
+                <button className={styles.button}>Подключиться</button>
+            </form></div>
     }
     var nameStyles = styles.webdiv
     if (props.lenn != props.idx){

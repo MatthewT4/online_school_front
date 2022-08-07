@@ -12,7 +12,7 @@ const MobileMenu = ({active, setActive}) => {
     return (
         <div className={active ? styles.menuActive : styles.menu} onClick={() => setActive(false)}>
             <div className={styles.blur}></div>
-            <div className={styles.menuContent} onClick={(e) => {e.stopPropagation()}}>
+            <div className={styles.menuContent} /*onClick={(e) => {e.stopPropagation()}}*/>
                 <div className={styles.menuHeader}>Курсы</div>
                 <ul className={styles.navbar}>
                 {courses.map((course, idx) => (

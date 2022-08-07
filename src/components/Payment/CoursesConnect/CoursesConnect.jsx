@@ -4,8 +4,10 @@ import styles from "./CoursesConnect.module.scss"
 import {domain, GetData, GetDataNew} from "../../baseComponents/baseFunctions";
 import Header from "../../Header/Header";
 import HwDiv from "../../baseComponents/HwDiv/HwDiv";
+import {useNavigate} from "react-router-dom";
 
 const CoursesConnect = () => {
+    const navi = useNavigate()
     const [courses, setCourses] = useState([])
     useEffect(() => {
         async function GetCourse() {
@@ -15,7 +17,8 @@ const CoursesConnect = () => {
             catch (err) {
                 console.log(err)
             }
-            GetData(domain + "/connecting_groups", setCourses)
+            let dataa = await GetDataNew("/connecting_groups", true)
+            setCourses(dataa)
         };
         GetCourse()
     }, [])
@@ -28,6 +31,9 @@ const CoursesConnect = () => {
                 <div className={mStyles.elem} style={{maxWidth:800, marginTop:20}}>
                     <h2 className={mStyles.zagolovoc}>Подключение к группам</h2>
                     <p>Ты уже подключился ко всем группам курсов!</p>
+                    <div className={styles.buttonDivRedirect}>
+                        <button className={styles.buttonRedirect} onClick={() => {navi("/")}}>Главный экран</button>
+                    </div>
                 </div>
             </div>
         </div>)
@@ -45,12 +51,14 @@ const CoursesConnect = () => {
                         <p>Нажми на кнопку <b>"Вступить"</b> напротив каждого курса, прими приглашение в группу и обязательно напиши любое сообщение в диалог с группой.</p>
                         {courses.length !== 0 ? courses.map((cou, idx )=> (
                             <div key={idx} className={styles.blockCourse}>
-                                <h2 className={styles.name}>{cou.name_course}</h2>
+                                <h3 className={styles.name}>{cou.name_course}</h3>
                                 <div className={styles.buttonConnect}><a className={styles.button} href={"/invite_group/"+cou.course_id} target="_blank">Вступить</a></div>
                             </div>
                         )) : ""}
                     </div>
-                    <div style={{height:5}}></div>
+                    <div className={styles.buttonDivRedirect}>
+                        <button className={styles.buttonRedirect} onClick={() => {navi("/")}}>Главный экран</button>
+                    </div>
                 </div>
             </div>
         </div>

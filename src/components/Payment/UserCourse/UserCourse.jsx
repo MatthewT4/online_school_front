@@ -3,7 +3,7 @@ import WebDiv from "../../baseComponents/WebDiv/WebDiv";
 import CourseBlock from "../CourseBlock/CourseBlock";
 import styles from "./UserCourse.module.scss";
 import {PostData} from "../../baseComponents/baseFunctions";
-import {useNavigate } from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 
 function convertTZ(date, tzString) {

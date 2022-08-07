@@ -4,7 +4,12 @@ function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
 }
 export const domain = "http://localhost"
+export const thisDomain = "http://localhost:3000"
+export const clientId = 8219136
 //export const domain = "https://serv.lyc15.ru"
+//export const thisDomain = "http://lk.lyc15.ru"
+//export const clientId = 51393056
+
 export function GetInfoDate(date) {
     var mesDate = new Date(date)
     let now = new Date()
@@ -48,7 +53,7 @@ export async function PostData(url, data) {
         },
         error: function (jqXHR) {
             if (jqXHR.status === 401) {
-                window.location.href = "/auth";
+                //window.location.href = "/auth";
             } else {
                 console.log("errr", jqXHR.status, jqXHR.data)
                 ret.code_req = jqXHR.status
@@ -97,8 +102,9 @@ export async function GetDataNew(url, payFunc) {
             dt = data
         },
         error: function (jqXHR) {
+            console.log("pay func:", payFunc)
             if (jqXHR.status === 401) {
-                if (payFunc) {
+                if (payFunc === true) {
                     window.location.href = "/auth?pay=true"
                 } else {
                     window.location.href = "/auth";

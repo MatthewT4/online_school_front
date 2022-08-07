@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import $ from 'jquery';
-import {domain} from "../baseComponents/baseFunctions";
+import {domain, thisDomain} from "../baseComponents/baseFunctions";
+import {useNavigate} from "react-router-dom";
 
 function getAllUrlParams(url) {
 
@@ -64,6 +65,7 @@ function getAllUrlParams(url) {
     return obj;
 }
 const Ant = () => {
+    const navi = useNavigate()
     const [codeVK, setCodeVK] = useState()
     let search = window.location.search
     let code = getAllUrlParams(search).code
@@ -73,8 +75,8 @@ const Ant = () => {
     let data
     useEffect(() => {
         async function Tess() {
-            //let url = domain + `/auth/login?code=${codeVK}&redirect_uri=http://localhost:3000/ant`
-            let url = domain + `/auth/login?code=${codeVK}&redirect_uri=https://lk.lyc15.ru/ant`
+            let url = domain + `/auth/login?code=${codeVK}&redirect_uri=${thisDomain}/ant`
+            //let url = domain + `/auth/login?code=${codeVK}&redirect_uri=https://lk.lyc15.ru/ant`
             data = await fetch(url, {
                 credentials: "include",
                 mode: 'cors',
@@ -86,9 +88,12 @@ const Ant = () => {
             let typeRedirect = getAllUrlParams(search).state
             console.log(typeRedirect, typeRedirect == "pay")
             if (typeRedirect == "pay") {
-                window.location.href = "/course_connect";
+                //window.location.href = "/course_connect";
+                navi("/course_connect")
             } else {
-                window.location.href = "/";
+                //window.location.href = "/";
+                console.log("redirect /")
+                navi("/")
             }
         }
         Tess()
