@@ -3,12 +3,12 @@ import $ from "jquery";
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
 }
-export const domain = "http://localhost"
-export const thisDomain = "http://localhost:3000"
-export const clientId = 8219136
-//export const domain = "https://serv.lyc15.ru"
-//export const thisDomain = "http://lk.lyc15.ru"
-//export const clientId = 51393056
+// export const domain = "http://localhost"
+// export const thisDomain = "http://localhost:3000"
+// export const clientId = 8219136
+export const domain = "https://serv.lyc15.ru"
+export const thisDomain = "https://lk.lyc15.ru"
+export const clientId = 51393056
 
 export function GetInfoDate(date) {
     var mesDate = new Date(date)
@@ -29,6 +29,7 @@ export function GetInfoDate(date) {
     var vec_month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
     return mesDate.getDate() + " " + vec_month[mesDate.getMonth()] + " в " + time + " мск."
 }
+
 export async function PostData(url, data) {
     let ret = {
         code_req: 0,

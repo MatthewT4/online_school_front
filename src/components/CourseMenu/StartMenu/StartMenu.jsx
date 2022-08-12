@@ -4,6 +4,7 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import WebDiv from "../../baseComponents/WebDiv/WebDiv";
 import WebMenu from "./WebMenu/WebMenu";
+import styles from "./StartMenu.module.scss"
 
 const StartMenu = () => {
     /*var courseId = useParams("id")
@@ -19,8 +20,25 @@ const StartMenu = () => {
     }*/
     return (
         <div>
-            <div className={mStyles.elem}>
-                <h2>123</h2>
+            <div style={{display:"flex", flexWrap: "wrap"}}>
+                <div className={mStyles.elem} style={{flexGrow:1, minWidth: 200}}>
+                    <h2 className={mStyles.zagolovoc}>Жизни</h2>
+                    <div>
+                        <p style={{color:"red", fontSize: "1.3em", marginTop:0, marginBottom:0}}>❤❤❤❤❤</p>
+                        <div style={{display:"flex"}}>
+                            <p style={{color:"gray", fontSize:"0.9em", marginTop:"0.3px"}}>Дней заморозки:</p>
+                            <p style={{fontSize:"1em", marginTop:"0.3px", marginLeft:2}}>31</p>
+                        </div>
+                        <button className={styles.zamorozkaNotAvailable} disabled>Заморозка недоступна</button>
+                        <button className={styles.zamorozkaActivate} disabled>Активировать заморозку</button>
+                    </div>
+                </div>
+                <div className={mStyles.elem} style={{flexGrow:1, minWidth: 200}}>
+                    <h2 className={mStyles.zagolovoc}>Информация</h2>
+                </div>
+                <div className={mStyles.elem} style={{flexGrow:1, minWidth: 200}}>
+                    <h2 className={mStyles.zagolovoc}>Ссылки</h2>
+                </div>
             </div>
             <WebMenu/>
         </div>

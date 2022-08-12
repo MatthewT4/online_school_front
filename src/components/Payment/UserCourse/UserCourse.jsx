@@ -84,12 +84,49 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
         let json = JSON.stringify(data);
         let res =  await PostData("/service/create_payment", json)
         console.log(res.code_req, res.dt)
-
         if (res.code_req != 200) {
             navi("/pay_error")
         }
+        /*
         document.cookie = res.dt.cookie
-        navi("/no_pay_info")
+        navi("/no_pay_info")*/
+
+        const jso = await JSON.parse(res.dt)
+        let data_receipt = { //содержимое элемента data
+            "CloudPayments": {
+                "CustomerReceipt": jso.receipt, //онлайн-чек
+            }
+        }
+        /* eslint-disable */
+        //onsole.log(jso.total, jso.payment_id, jso)
+        var widget = new cp.CloudPayments(); //eslint-disable-lin
+        widget.pay('auth', // или 'charge'
+            { //options
+                publicId: 'pk_3ae9c4a6d1ddaf51e473b3102cf0f', //id из личного кабинета
+                description: 'Оплата доступа lyc15.ru', //назначение
+                amount: jso.total, //сумма
+                currency: 'RUB', //валюта
+                accountId: jso.user_id, //идентификатор плательщика (необязательно)
+                invoiceId: jso.payment_id, //номер заказа  (необязательно)
+                //email: 'user@example.com', //email плательщика (необязательно)
+                skin: "mini", //дизайн виджета (необязательно)
+                requireEmail: true,
+                data: data_receipt
+            },
+            {
+                onSuccess: function (options) { // success
+                    navi("/course_connect")
+                    //действие при успешной оплате
+                },
+                onFail: function (reason, options) { // fail
+                    //действие при неуспешной оплате
+                },
+                onComplete: function (paymentResult, options) { //Вызывается как только виджет получает от api.cloudpayments ответ с результатом транзакции.
+                    //например вызов вашей аналитики Facebook Pixel
+                }
+            }
+        )
+        /* eslint-enable */
     }
     return (
         <div>
