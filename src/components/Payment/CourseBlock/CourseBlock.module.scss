@@ -67,3 +67,29 @@
     margin-top: 10px;
   }
 }
+
+.BuyAllPerDiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.PBuyAllPer {
+  font-size: 1rem;
+  color: #6c6c6c;
+  margin: 0;
+  padding: 0;
+}
+.skidka {
+  font-size: 0.6em;
+  color: red;
+  margin: 0;
+  margin-left: 1px;
+  padding: 0.5px;
+  padding-top: 0.6px;
+  padding-bottom: 0.1px;
+  font-weight: bold;
+  border-width: 0.1ex;
+  border-style: solid;
+  border-color: red;
+  border-radius: 5px;
+}
