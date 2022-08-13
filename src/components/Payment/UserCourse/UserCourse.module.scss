@@ -39,3 +39,39 @@
 .button:focus {
   background: #FB9191;
 }
+
+.discountDiv {
+  display: flex;
+  color: red;
+}
+.discountDiv * {
+  margin-bottom: 0.3rem;
+  margin-top: 0;
+  padding: 0;
+}
+
+.amountDiv {
+  display: flex;
+  border-top-style: solid;
+  border-top-width: 0.3px;
+  border-top-color: black;
+}
+.amountDiv * {
+  margin-top: 0.3rem;
+  font-size: 1.8rem;
+}
+
+.total {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 460px) {
+  .amountDiv * {
+    font-size: 1.3rem;
+  }
+  .discountDiv * {
+    font-size: 1rem;
+  }
+}

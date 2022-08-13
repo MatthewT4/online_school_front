@@ -13,6 +13,13 @@
   margin-top: auto;
   margin-bottom: auto;
 }
+
+@media screen and (max-width: 360px) {
+  .checkboxDiv {
+    padding-left: 5px;
+    padding-right: 10px;
+  }
+}
 .checkbox {
   width: 1.3em;
   height: 1.3em;
@@ -31,6 +38,7 @@
   margin-top: 0.7em;
   margin-bottom: 0;
   padding-bottom: 0;
+  margin-right: 5px;
 }
 
 .pysto {
@@ -41,12 +49,44 @@
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 7px;
+  text-align: right;
 }
 
 .infDiv {
   margin-top: auto;
   margin-bottom: auto;
 }
+
+
+.BuyAllPerDiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.PBuyAllPer {
+  text-align: center;
+  font-size: 1rem;
+  color: #6c6c6c;
+  margin: 0;
+  padding: 0;
+}
+.skidka {
+  font-size: 0.6em;
+  color: red;
+  margin: 0;
+  margin-left: 1px;
+  margin-right: 5px;
+  padding-left: 0.5px;
+  padding-right: 0.5px;
+  /*padding-top: 0.7px;
+  padding-bottom: 0.1px;*/
+  font-weight: bold;
+  border-width: 0.1ex;
+  border-style: solid;
+  border-color: red;
+  border-radius: 5px;
+}
+
 
 @media screen and (max-width: 460px) {
   .name {
@@ -66,30 +106,24 @@
     margin: 2px;
     margin-top: 10px;
   }
+  .PBuyAllPer {
+    font-size: 0.55rem;
+  }
+  .skidka {
+    font-size: 0.4rem;
+    padding-top: 0.3px;
+    padding-bottom: 0.4px;
+  }
 }
 
-.BuyAllPerDiv {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.PBuyAllPer {
-  font-size: 1rem;
-  color: #6c6c6c;
-  margin: 0;
+.endPrice {
+  text-align: right;
+  color: #868686;
   padding: 0;
-}
-.skidka {
-  font-size: 0.6em;
-  color: red;
   margin: 0;
-  margin-left: 1px;
-  padding: 0.5px;
-  padding-top: 0.6px;
-  padding-bottom: 0.1px;
-  font-weight: bold;
-  border-width: 0.1ex;
-  border-style: solid;
-  border-color: red;
-  border-radius: 5px;
+}
+.delOldPrice {
+  text-decoration: line-through;
+  text-decoration-color: red;
+
 }

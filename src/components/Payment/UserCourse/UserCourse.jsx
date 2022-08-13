@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import WebDiv from "../../baseComponents/WebDiv/WebDiv";
 import CourseBlock from "../CourseBlock/CourseBlock";
 import styles from "./UserCourse.module.scss";
@@ -25,47 +25,78 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
     const navi = useNavigate()
     let buyCourse = {}
     const [payActive, setPayActive] = useState(true)
-    const [buyCourseState, setBuyCourseState] = useState([])
-    useEffect(() => {
-        if (userCour == null) {
-            userCour = []
+    if (userCour == null) {
+        userCour = []
+    }
+    if (awailCour == null) {
+        awailCour = []
+    }
+    if (userCour.length === 0 && awailCour.length === 0) {
+        return (
+            <p>Похоже сейчас нет доступных для записи курсов</p>
+        )
+    }
+    var PredAmount = 0
+    for (let i = 0; i < userCour.length; i++) {
+        buyCourse[userCour[i].course_id] = {
+            period_id: userCour[i].period_id,
+            buy: true,
+            course_id: userCour[i].course_id,
+            buyAllPer: false,
+            price: userCour[i].price,
+            price_all_periods:  userCour[i].price_all_periods,
+            discount_all_pers: userCour[i].discount_all_pers
         }
-        if (awailCour == null) {
-            awailCour = []
-        }
-        if (userCour.length === 0 && awailCour.length === 0) {
-            return (
-                <p>Похоже сейчас нет доступных для записи курсов</p>
-            )
-        }
-        for (let i = 0; i < userCour.length; i++) {
-            buyCourse[userCour[i].course_id] = {
-                period_id: userCour[i].period_id,
-                buy: true,
-                course_id: userCour[i].course_id,
-                buyAllPer: false
-            }
-        }
+        PredAmount += userCour[i].price
+    }
 
-        for (let i = 0; i < awailCour.length; i++) {
-            buyCourse[awailCour[i].course_id] = {
-                period_id: awailCour[i].period_id,
-                buy: false,
-                course_id: awailCour[i].course_id,
-                buyAllPer: false
+    for (let i = 0; i < awailCour.length; i++) {
+        buyCourse[awailCour[i].course_id] = {
+            period_id: awailCour[i].period_id,
+            buy: false,
+            course_id: awailCour[i].course_id,
+            buyAllPer: false,
+            price: awailCour[i].price,
+            price_all_periods:  awailCour[i].price_all_periods,
+            discount_all_pers: awailCour[i].discount_all_pers
+        }
+    }
+    console.log(buyCourse)
+    function SetAmount() {
+        let amount = 0
+        let discount = 0
+        for (var key of Object.keys(buyCourse)) {
+            if (buyCourse[key].buy) {
+                if (buyCourse[key].buyAllPer) {
+                    amount += buyCourse[key].price_all_periods
+                    discount += buyCourse[key].discount_all_pers
+                } else {
+                    amount += buyCourse[key].price
+                }
             }
         }
-    }, [userCour, awailCour])
+        document.getElementById('amount').innerHTML =  amount + " руб."
+        if (discount != 0) {
+            document.getElementById('discount').innerHTML = `<h3>Выгода</h3>
+                    <div style=\"flex-grow: 1;\"></div>
+                    <h3>` + discount +` руб.</h3>`
+        } else {
+            document.getElementById('discount').innerHTML = ""
+        }
+    }
+
     function SetBuyAllPer(courseId, buy) {
         let vr = buyCourse[courseId]
         vr.buyAllPer = buy
         buyCourse[courseId] = vr
+        SetAmount()
     }
     function SetBuyCourse(courseId, buy) {
         let vr = buyCourse[courseId]
         vr.buy = buy
         buyCourse[courseId] = vr
         console.log(buyCourse)
+        SetAmount()
         /*
         let couBuy = 0
         for (var key of Object.keys(buyCourse)) {
@@ -151,19 +182,21 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
         <div>
             <div>
                 {userCour.map((web, idx )=> (
-                    <CourseBlock setBuy={SetBuyCourse} index={idx} flagBuyCourse={buyCourse[web.course_id].buy} courseName={web.name} courseId={web.course_id} periodId={web.period_id} Price={web.price} coursePeriod={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.period_end)} availBuyAllPer={web.buy_all_period} amountAllPer={web.price_all_period} endTimeAllPeriods={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.end_all_periods)} setBuyAllPr={SetBuyAllPer}/>
+                    <CourseBlock discountAllPer={web.discount_all_pers} setBuy={SetBuyCourse} index={idx} flagBuyCourse={buyCourse[web.course_id].buy} courseName={web.name} courseId={web.course_id} periodId={web.period_id} Price={web.price} coursePeriod={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.period_end)} availBuyAllPer={web.buy_all_periods} amountAllPer={web.price_all_periods} endTimeAllPeriods={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.end_all_periods)} setBuyAllPr={SetBuyAllPer}/>
                 ))}
             </div>
             <div>
                 {awailCour.map((web, idx )=> (
-                    <CourseBlock setBuy={SetBuyCourse} index={idx} flagBuyCourse={buyCourse[web.course_id].buy} courseName={web.name} courseId={web.course_id} periodId={web.period_id} Price={web.price} coursePeriod={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.period_end)} availBuyAllPer={web.buy_all_period} amountAllPer={web.price_all_period} endTimeAllPeriods={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.end_all_periods)} setBuyAllPr={SetBuyAllPer}/>
+                    <CourseBlock discountAllPer={web.discount_all_pers} setBuy={SetBuyCourse} index={idx} flagBuyCourse={buyCourse[web.course_id].buy} courseName={web.name} courseId={web.course_id} periodId={web.period_id} Price={web.price} coursePeriod={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.period_end)} availBuyAllPer={web.buy_all_periods} amountAllPer={web.price_all_periods} endTimeAllPeriods={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.end_all_periods)} setBuyAllPr={SetBuyAllPer}/>
                 ))}
             </div>
-            <div id="amount">
-                <div style={{display:"flex"}}>
-                    <h3>Итого</h3>
+            <div className={styles.total}>
+                <div  className={styles.discountDiv} id="discount">
+                </div>
+                <div className={styles.amountDiv}>
+                    <h1>Итого</h1>
                     <div style={{flexGrow:1}}></div>
-                    <p>1234 руб.</p>
+                    <h1 id="amount">{PredAmount} руб.</h1>
                 </div>
             </div>
             {payActive ?

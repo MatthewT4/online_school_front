@@ -94,3 +94,21 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+@media screen and (max-width: 460px) {
+  input:checked + .slider:before {
+    -webkit-transform: translateX(11.5px);
+    -ms-transform: translateX(11.5px);
+    transform: translateX(11.5px);
+  }
+  .switch {
+    height: 14px;
+    width: 26px;
+  }
+  .slider:before {
+    width: 10px;
+    height: 10px;
+    left: 2.5px;
+    bottom: 2.1px;
+  }
+}
