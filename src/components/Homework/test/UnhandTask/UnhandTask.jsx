@@ -17,7 +17,7 @@ const UnhandTask = (props) => {
                 <h2 className={mStyles.zagolovoc}>Задание №{props.data.number}</h2>
             </div>
             <div className={mStyles.soderzanie}>
-                <p className={styles.text}>{props.data.text}</p>
+                <div><p className={styles.text}>{props.data.text}</p></div>
                 <div className={styles.answer}>
                     <p style={{ marginRight:5}}>Ответ:</p>
                     <form>

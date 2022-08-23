@@ -75,3 +75,52 @@
     font-size: 1rem;
   }
 }
+
+.promoCodeButton {
+  border: none;
+  background-color: #2196F3;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+  color: white;
+  border-radius: 0 4px 4px 0;
+  padding: 4px;
+}
+
+.promoCodeInp {
+  outline:none;
+  margin-left: 2px;
+  border: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px 0 0 4px;
+  border-color: #2196F3;
+}
+
+.inActivePromoCodeButton {
+  border: none;
+  background-color: #ababab;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+  color: white;
+  border-radius: 0 4px 4px 0;
+}
+
+.inActivePromoCodeInp {
+  outline:none;
+  margin-left: 2px;
+  border: none;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px 0 0 4px;
+  border-color: #ababab;
+  border-right: none;
+}
+
+.authBut {
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 3px;
+  //margin-left: 5px;
+  background-color: red;
+  color: white;
+  //border-radius: 5px;
+  border-radius: 0 4px 4px 0;
+}

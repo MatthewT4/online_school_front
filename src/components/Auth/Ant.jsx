@@ -90,6 +90,8 @@ const Ant = () => {
             if (typeRedirect == "pay") {
                 //window.location.href = "/course_connect";
                 navi("/course_connect")
+            } else if (typeRedirect == "payment") {
+                navi("/payment")
             } else {
                 //window.location.href = "/";
                 console.log("redirect /")

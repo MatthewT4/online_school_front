@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import WebDiv from "../../baseComponents/WebDiv/WebDiv";
 import CourseBlock from "../CourseBlock/CourseBlock";
 import styles from "./UserCourse.module.scss";
-import {PostData} from "../../baseComponents/baseFunctions";
+import {GetDataNew, PostData} from "../../baseComponents/baseFunctions";
 import {useNavigate} from "react-router-dom"
 
 
 function convertTZ(date, tzString) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
+}
+
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
 function getCoursePeriod(date) {
@@ -22,6 +29,20 @@ function getCoursePeriod(date) {
     return mesDate.getDate() + " " + vec_month[mesDate.getMonth()]
 }
 const UserCourse = ({userCour, awailCour, rend, setRend}) => {
+    //var cookie = await GetDataNew("/service/check_auth", false)
+    const [cookie, setCookie] = useState(false)
+    useEffect(() => {
+        async function checkCookieAuth() {
+            let c = await GetDataNew("/service/check_auth", false)
+            if (c === 0) {
+                setCookie(false)
+            } else {
+                setCookie(c.status)
+            }
+        }
+        checkCookieAuth()
+    }, [])
+    var promo_code = ""
     const navi = useNavigate()
     let buyCourse = {}
     const [payActive, setPayActive] = useState(true)
@@ -62,6 +83,46 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
         }
     }
     console.log(buyCourse)
+    var promo_code = ""
+
+
+    async function SetPromoCode() {
+        document.getElementById('promo_message').innerHTML = ""
+        document.getElementById('promo_code_table').innerHTML = ""
+        document.getElementById('amount').innerHTML = PredAmount + " руб."
+        promo_code = ""
+
+        let pc = document.getElementById("promo_code").value
+        if (pc == "" || pc == undefined) {
+            return
+        }
+        let dataa = await GetDataNew(`/cal_amount_in_promo_code?promo_code=${pc}&amount=${PredAmount}`, false)
+        if (dataa == 0) {
+            document.getElementById('promo_message').innerHTML = "<p style='color:red; margin-top:0'>Ошибка, попробуйте обновить страницу или обратитесь в тех. поддержку</p>"
+            return
+        }
+        console.log(dataa)
+        let obj = dataa
+        console.log("obj.message", obj.message)
+        if (obj.message != "") {
+            document.getElementById('promo_message').innerHTML = "<p style='color:red; margin-top:0'>" + obj.message + "</p>"
+            return
+        }
+        document.getElementById('promo_message').innerHTML = "<p style='color:green; margin-top:0'>Промокод успешно применён!</p>"
+
+        document.getElementById('amount').innerHTML = obj.amount + " руб."
+        promo_code = pc
+        if (obj.discount != 0) {
+            document.getElementById('promo_code_table').innerHTML = `<h3>Промо-код</h3>
+                    <div style=\"flex-grow: 1;\"></div>
+                    <h3>-` + obj.discount + ` руб.</h3>`
+        } else {
+            document.getElementById('promo_code_table').innerHTML = `
+            <p>Выберите курсы для скидки по промокоду</p>`
+        }
+    }
+
+
     function SetAmount() {
         let amount = 0
         let discount = 0
@@ -76,13 +137,15 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
             }
         }
         document.getElementById('amount').innerHTML =  amount + " руб."
+        PredAmount = amount
         if (discount != 0) {
             document.getElementById('discount').innerHTML = `<h3>Выгода</h3>
                     <div style=\"flex-grow: 1;\"></div>
-                    <h3>` + discount +` руб.</h3>`
+                    <h3>-` + discount +` руб.</h3>`
         } else {
             document.getElementById('discount').innerHTML = ""
         }
+        SetPromoCode()
     }
 
     function SetBuyAllPer(courseId, buy) {
@@ -129,7 +192,7 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
         }
         let data = {
             buy: ret,
-            promo_code: ""
+            promo_code: promo_code
         }
         let json = JSON.stringify(data);
         let res =  await PostData("/service/create_payment", json)
@@ -190,9 +253,18 @@ const UserCourse = ({userCour, awailCour, rend, setRend}) => {
                     <CourseBlock discountAllPer={web.discount_all_pers} setBuy={SetBuyCourse} index={idx} flagBuyCourse={buyCourse[web.course_id].buy} courseName={web.name} courseId={web.course_id} periodId={web.period_id} Price={web.price} coursePeriod={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.period_end)} availBuyAllPer={web.buy_all_periods} amountAllPer={web.price_all_periods} endTimeAllPeriods={getCoursePeriod(web.period_start) + " - " + getCoursePeriod(web.end_all_periods)} setBuyAllPr={SetBuyAllPer}/>
                 ))}
             </div>
+            <div style={{marginTop:5}}>
+                {!cookie ?
+                    <div><div style={{display:"flex"}}><input disabled style={{width:"200px"}} placeholder="Войдите для ввода промокода" className={styles.inActivePromoCodeInp} type="text"/><a className={styles.authBut} href={"/auth?payment=true"}>Войти</a></div></div>
+                    :   <div style={{display:"flex"}}><input id="promo_code" placeholder="Промокод" className={styles.promoCodeInp} type="text"/><button className={styles.promoCodeButton} onClick={SetPromoCode}>Применить</button></div>
+                }
+                <div style={{fontSize:10, marginLeft:12}} id={"promo_message"}></div>
+            </div>
             <div className={styles.total}>
-                <div  className={styles.discountDiv} id="discount">
-                </div>
+                <div className={styles.discountDiv} id="promo_code_table"></div>
+
+                <div  className={styles.discountDiv} id="discount"></div>
+
                 <div className={styles.amountDiv}>
                     <h1>Итого</h1>
                     <div style={{flexGrow:1}}></div>

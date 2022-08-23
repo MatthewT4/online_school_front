@@ -11,6 +11,8 @@ function Redirect() {
     var strGET = window.location.search.replace( '?', '');
     if (strGET == "pay=true") {
         url += "&state=pay"
+    } else if (strGET == "payment=true") {
+        url += "&state=payment"
     } else {
         url += "&state=standart"
     }
