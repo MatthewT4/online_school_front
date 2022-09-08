@@ -19,6 +19,7 @@ import PayError from "./components/Payment/PayError/PayError";
 import NoPayForm from "./components/Payment/NoPayForm/NoPayForm";
 import CoursesConnect from "./components/Payment/CoursesConnect/CoursesConnect";
 import InviteGroup from "./components/Payment/InviteGroup/InviteGroup";
+import Intensive from "./components/LinkingIntensive/LinkingIntensive";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="/no_pay_info" element={<NoPayForm/>}/>
               <Route path="/course_connect" element={<CoursesConnect/>}/>
               <Route path="/invite_group/:id" element={<InviteGroup/>}/>
+              <Route path="/invite_intensive/:tag" element={<Intensive/>}/>
               <Route path="/" element={<Temp/>}>
                   <Route index element={<MainMenu/>}/>
                   <Route path="course/:id/" element={<CourseMenu/>}>

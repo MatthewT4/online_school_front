@@ -1,0 +1,42 @@
+.buttConnect {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  justify-content: center;
+  padding: 7px;
+  border-radius: 10px;
+  display: inline-block;
+}
+.buttNotConnect {
+  background-color: #c4c4c4;
+  color: black;
+  justify-content: center;
+  padding: 7px;
+  border-radius: 10px;
+  display: inline-block
+}
+.name {
+  margin: 0;
+  padding-bottom: 0;
+  padding-top: 3px;
+}
+
+.divContent {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+  .name {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .name {
+    font-size: 0.9rem;
+  }
+  .buttConnect {
+    font-size: 0.8rem;
+  }
+}

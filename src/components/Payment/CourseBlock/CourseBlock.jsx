@@ -22,7 +22,7 @@ const CourseBlock = ({courseName, courseId, periodId, coursePeriod, flagBuyCours
             <div className={styles.infDiv}>
                 <h3 className={styles.name}>{courseName}</h3>
                 {buyAllPer ? <p className={styles.period}>{endTimeAllPeriods}</p> : <p className={styles.period}>{coursePeriod}</p>}
-                {availBuyAllPer ? <div className={styles.BuyAllPerDiv}><p className={styles.PBuyAllPer}>за месяц</p><label className="switch"><input type="checkbox" defaultChecked={buyAllPer} onClick={editAllBuyPer}/><span className="slider round"></span></label><p className={styles.PBuyAllPer}>за год</p><p className={styles.skidka}>-15%</p></div> : ""}
+                {/*{availBuyAllPer ? <div className={styles.BuyAllPerDiv}><p className={styles.PBuyAllPer}>за месяц</p><label className="switch"><input type="checkbox" defaultChecked={buyAllPer} onClick={editAllBuyPer}/><span className="slider round"></span></label><p className={styles.PBuyAllPer}>за год</p><p className={styles.skidka}>-15%</p></div> : ""}*/}
             </div>
             <div className={styles.pysto}></div>
             <div className={styles.price}>

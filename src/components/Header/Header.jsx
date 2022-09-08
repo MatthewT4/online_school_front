@@ -16,7 +16,7 @@ const Header = ({menu}) => {
             <header className={styles.header}>
                 {header}
                 <div className={styles.logo}>
-                    <img className={styles.logoImage} src={logoImage} alt=''/>
+                    <a href="/"><img className={styles.logoImage} src={logoImage} alt=''/></a>
                 </div>
             </header>
             {menu ?

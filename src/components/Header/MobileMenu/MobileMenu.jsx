@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./MobileMenu.module.scss"
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 import {GetData} from "../../baseComponents/baseFunctions";
 import {domain} from "../../baseComponents/baseFunctions";
 const MobileMenu = ({active, setActive}) => {
@@ -20,6 +20,12 @@ const MobileMenu = ({active, setActive}) => {
                         <li><NavLink className={({isActive}) => isActive ? (styles.active) : ""}  to={`/course/${course.course_id}`}>{course.name_course}</NavLink></li>
                     </div>
                 ))}
+                </ul>
+                <div className={styles.menuHeader} style={{marginTop: 10}}>Сервисы</div>
+                <ul className={styles.navbar}>
+                        <div className={styles.courseBlock}>
+                            <li><Link to={`/payment`}>Оплата</Link></li>
+                        </div>
                 </ul>
             </div>
         </div>

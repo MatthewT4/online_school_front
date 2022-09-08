@@ -117,3 +117,36 @@ export async function GetDataNew(url, payFunc) {
     });
     return dt
 }
+
+export async function GetDataNewRedirest(url, redUrl) {
+    let dt = ""
+    let code = 200
+    let ret = {
+        code: 200,
+        datt: ""
+    }
+    await $.ajax({
+        xhrFields: { withCredentials: true },
+        crossDomain: true,
+        type: 'GET',
+        url: domain+url,
+        dataType: 'json',
+        success: function (data) {
+            dt = data
+        },
+        error: function (jqXHR) {
+            if (jqXHR.status === 401) {
+                if (redUrl !== "") {
+                    window.location.href = "/auth?" + redUrl
+                } else {
+                    window.location.href = "/auth";
+                }
+            } else {
+                code = jqXHR.status
+            }
+        }
+    });
+    ret.code = code
+    ret.datt = dt
+    return ret
+}

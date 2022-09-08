@@ -92,6 +92,8 @@ const Ant = () => {
                 navi("/course_connect")
             } else if (typeRedirect == "payment") {
                 navi("/payment")
+            } else if (typeRedirect.substr(0, 1) == "i") {
+                navi("/invite_intensive/"+ typeRedirect.substr(1, typeRedirect.length-1))
             } else {
                 //window.location.href = "/";
                 console.log("redirect /")

@@ -13,6 +13,12 @@ function Redirect() {
         url += "&state=pay"
     } else if (strGET == "payment=true") {
         url += "&state=payment"
+    } else if (strGET.substr(0, 9) == "intensive") {
+        let vr = ""
+        for (let i = 10; i < strGET.length; i++) {
+            vr += strGET[i]
+        }
+        url += "&state=i" + vr
     } else {
         url += "&state=standart"
     }
